@@ -23,7 +23,7 @@
 
 <!-- ================= TOPBAR ================= -->
 <header class="sticky top-0 z-50 border-b border-white/10 bg-ink/95 backdrop-blur-xl">
-  <div class="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-3">
+  <div class="mx-auto flex max-w-[1500px] items-center justify-between gap-2 px-4 py-3 sm:px-5">
     <div class="flex items-center gap-3">
       <button @click="sidebar = !sidebar" class="lg:hidden grid h-10 w-10 place-items-center rounded-lg border border-white/15 text-cream">
         <i class="fa-solid" :class="sidebar ? 'fa-xmark' : 'fa-bars'"></i>
@@ -81,15 +81,15 @@
         <p class="text-[10px] uppercase tracking-ultra text-sand/70">Menuju garis start</p>
         <p class="display mt-2 text-4xl gold-text" x-text="countdown.days"></p>
         <p class="text-[11px] text-sand/60">hari lagi · 20 Mar 2027</p>
-        <a href="daftar.html" class="mt-4 flex items-center justify-center gap-2 rounded-full bg-cream/10 px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-cream hover:text-ink transition">
+        <button @click="tab = 'paket'" class="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-cream/10 px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest transition hover:bg-cream hover:text-ink">
           <i class="fa-solid fa-plus"></i> Tambah Kategori
-        </a>
+        </button>
       </div>
     </nav>
   </aside>
 
   <!-- sidebar mobile -->
-  <div x-show="sidebar" x-cloak x-collapse class="lg:hidden fixed inset-x-0 top-[64px] z-40 border-b border-slate1/10 bg-white p-4">
+  <div x-show="sidebar" x-cloak x-collapse class="fixed inset-x-0 top-[64px] z-40 max-h-[70vh] overflow-y-auto border-b border-slate1/10 bg-white p-4 shadow-xl lg:hidden">
     <ul class="grid grid-cols-2 gap-2">
       <template x-for="m in menu" :key="m.id">
         <li>
@@ -101,25 +101,33 @@
         </li>
       </template>
     </ul>
+    <div class="mt-3 grid grid-cols-2 gap-2">
+      <a href="index.html" class="flex items-center justify-center gap-2 rounded-xl border border-slate1/15 px-3 py-3 text-xs font-semibold text-slate2">
+        <i class="fa-solid fa-house"></i> Beranda
+      </a>
+      <a href="login.html" class="flex items-center justify-center gap-2 rounded-xl border border-slate1/15 px-3 py-3 text-xs font-semibold text-maroon">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+      </a>
+    </div>
   </div>
 
   <!-- ================= KONTEN ================= -->
-  <main class="min-w-0 flex-1 bg-paper px-5 py-8">
+  <main class="min-w-0 flex-1 bg-paper px-4 py-6 sm:px-5 sm:py-8">
 
     <!-- ---------- HEADLINE ---------- -->
     <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="text-[11px] uppercase tracking-ultra text-gold">Dashboard Pelari</p>
-        <h1 class="display mt-2 text-3xl text-slate1">Salam damai, <span class="text-maroon" x-text="user.panggilan"></span>!</h1>
+        <h1 class="display mt-2 text-2xl text-slate1 sm:text-3xl">Salam damai, <span class="text-maroon" x-text="user.panggilan"></span>!</h1>
         <p class="mt-1 text-sm text-slate2">Pendaftaran kamu aktif. Siapkan langkah untuk 20 Maret 2027.</p>
       </div>
-      <div class="flex gap-2">
-        <button @click="tab='tiket'" class="rounded-full btn-ghost px-5 py-3 text-[11px] font-bold uppercase tracking-widest">
+      <div class="flex flex-wrap gap-2">
+        <button @click="tab='tiket'" class="flex-1 rounded-full btn-ghost px-4 py-3 text-[11px] font-bold uppercase tracking-widest sm:flex-none sm:px-5">
           <i class="fa-solid fa-qrcode"></i> E-Ticket
         </button>
-        <a href="daftar.html" class="rounded-full btn-primary px-5 py-3 text-[11px] font-bold uppercase tracking-widest">
-          <i class="fa-solid fa-ticket"></i> Pesan Lagi
-        </a>
+        <button @click="tab='paket'" class="flex-1 rounded-full btn-primary px-4 py-3 text-[11px] font-bold uppercase tracking-widest sm:flex-none sm:px-5">
+          <i class="fa-solid fa-cart-shopping"></i> Pesan Paket
+        </button>
       </div>
     </div>
 
@@ -241,6 +249,138 @@
       </div>
     </section>
 
+    <!-- ================= TAB: PESAN PAKET ================= -->
+    <section x-show="tab === 'paket'" x-cloak class="mt-6 grid gap-6 xl:grid-cols-12">
+      <div class="xl:col-span-8 space-y-6">
+        <!-- langkah -->
+        <div class="card p-4 sm:p-5">
+          <ol class="grid grid-cols-3 gap-2 text-center sm:gap-3">
+            <template x-for="(s,i) in langkahPesan" :key="i">
+              <li class="rounded-xl border px-2 py-3" :class="i === 0 ? 'border-maroon bg-maroon/5' : 'border-slate1/10'">
+                <span class="display text-xs tracking-widest" :class="i === 0 ? 'text-maroon' : 'text-slate2/60'" x-text="'0'+(i+1)"></span>
+                <p class="mt-1 text-[10px] font-semibold uppercase leading-tight tracking-wide sm:text-[11px]"
+                   :class="i === 0 ? 'text-slate1' : 'text-slate2/70'" x-text="s"></p>
+              </li>
+            </template>
+          </ol>
+        </div>
+
+        <div class="card p-5 sm:p-7">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="display text-lg text-slate1">Pilih Paket Kategori</h3>
+              <p class="mt-1 text-xs text-slate2">Maksimal 1 slot per kategori untuk setiap akun pelari.</p>
+            </div>
+            <span class="flex items-center gap-2 text-[11px] font-semibold text-emerald-600">
+              <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Kuota real-time
+            </span>
+          </div>
+
+          <div class="mt-5 space-y-3">
+            <template x-for="(t,i) in paket" :key="t.id">
+              <div class="rounded-2xl border p-4 transition sm:p-5"
+                   :class="t.soldOut ? 'border-rose-200 bg-rose-50/60' : (t.qty > 0 ? 'border-maroon bg-maroon/[.03]' : 'border-slate1/10 hover:border-gold/60')">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <p class="text-sm font-bold uppercase tracking-wide text-slate1" x-text="t.name"></p>
+                    <p class="mt-1 text-xs text-slate2" x-text="t.desc"></p>
+                    <p x-show="t.soldOut" class="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-rose-600">
+                      <i class="fa-solid fa-circle-xmark"></i> Sold Out
+                    </p>
+                    <p x-show="!t.soldOut" class="mt-2 text-[11px] text-slate2">
+                      Sisa kuota: <span class="font-bold text-slate1" x-text="t.stock"></span>
+                    </p>
+                  </div>
+                  <p class="shrink-0 text-right text-sm font-extrabold"
+                     :class="t.soldOut ? 'text-rose-400 line-through' : 'text-maroon'" x-text="rupiah(t.price)"></p>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between border-t border-slate1/10 pt-4">
+                  <span class="text-[11px] uppercase tracking-widest text-slate2">Jumlah</span>
+                  <div class="flex items-center gap-2">
+                    <button @click="kurang(i)" :disabled="t.soldOut || t.qty === 0"
+                            class="grid h-9 w-9 place-items-center rounded-lg border border-slate1/15 text-slate1 transition hover:bg-slate1 hover:text-cream disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-slate1">
+                      <i class="fa-solid fa-minus text-xs"></i>
+                    </button>
+                    <input type="text" readonly :value="t.qty" class="h-9 w-14 rounded-lg border border-slate1/15 text-center text-sm font-bold text-slate1">
+                    <button @click="tambah(i)" :disabled="t.soldOut || t.qty >= 1"
+                            class="grid h-9 w-9 place-items-center rounded-lg border border-slate1/15 text-slate1 transition hover:bg-slate1 hover:text-cream disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-slate1">
+                      <i class="fa-solid fa-plus text-xs"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- metode pembayaran -->
+        <div class="card p-5 sm:p-7">
+          <h3 class="display text-lg text-slate1">Metode Pembayaran</h3>
+          <div class="mt-4 grid gap-3 sm:grid-cols-3">
+            <template x-for="m in metode" :key="m.id">
+              <button @click="bayarVia = m.id"
+                      class="flex items-center gap-3 rounded-2xl border p-4 text-left transition"
+                      :class="bayarVia === m.id ? 'border-maroon bg-maroon/[.04]' : 'border-slate1/10 hover:border-gold/60'">
+                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-maroon/10 text-maroon"><i class="fa-solid" :class="m.icon"></i></span>
+                <span class="min-w-0">
+                  <span class="block text-xs font-bold text-slate1" x-text="m.label"></span>
+                  <span class="block text-[11px] text-slate2" x-text="m.desc"></span>
+                </span>
+              </button>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <!-- ringkasan pesanan -->
+      <div class="xl:col-span-4">
+        <div class="card p-5 sm:p-6 xl:sticky xl:top-[88px]">
+          <h3 class="display text-lg text-slate1">Ringkasan Pesanan</h3>
+
+          <div class="mt-4 flex items-center gap-3 rounded-2xl bg-paper p-3">
+            <div class="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-xl bg-[linear-gradient(135deg,#6E1515,#15100E)]">
+              <img src="./img/logo.png" alt="" class="h-9">
+            </div>
+            <div class="min-w-0">
+              <p class="truncate text-sm font-bold text-slate1">Papua Peace Run 2027</p>
+              <p class="text-[11px] text-slate2">Sabtu, 20 Mar 2027 · Jayapura</p>
+            </div>
+          </div>
+
+          <div class="mt-5 space-y-2 text-sm">
+            <template x-for="t in paket.filter(p => p.qty > 0)" :key="t.id">
+              <div class="flex items-center justify-between text-slate2">
+                <span x-text="t.name + ' × ' + t.qty"></span>
+                <span class="font-semibold text-slate1" x-text="rupiah(t.price * t.qty)"></span>
+              </div>
+            </template>
+            <p x-show="subtotal === 0" class="text-xs text-slate2">Belum ada paket dipilih.</p>
+            <div x-show="subtotal > 0" class="flex items-center justify-between text-slate2">
+              <span>Biaya layanan</span>
+              <span class="font-semibold text-slate1" x-text="rupiah(fee)"></span>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center justify-between border-t border-slate1/10 pt-4">
+            <span class="display text-sm tracking-widest text-slate1">Total</span>
+            <span class="display text-2xl text-maroon" x-text="rupiah(subtotal + (subtotal > 0 ? fee : 0))"></span>
+          </div>
+
+          <button @click="bayar()" :disabled="subtotal === 0"
+                  class="mt-5 flex w-full items-center justify-center gap-3 rounded-full px-6 py-4 text-xs font-bold uppercase tracking-widest transition"
+                  :class="subtotal > 0 ? 'btn-primary' : 'cursor-not-allowed bg-slate1/10 text-slate2'">
+            <i class="fa-solid fa-credit-card"></i> Bayar Sekarang
+          </button>
+
+          <p x-show="pesananSukses" x-cloak x-transition class="mt-4 rounded-xl bg-emerald-50 p-4 text-xs font-semibold text-emerald-700">
+            <i class="fa-solid fa-circle-check"></i> Pembayaran berhasil disimulasikan. E-ticket kamu sudah terbit.
+          </p>
+          <p class="mt-3 text-center text-[11px] text-slate2">Data pelari dapat dilengkapi setelah pembayaran.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= TAB: E-TICKET ================= -->
     <section x-show="tab === 'tiket'" x-cloak class="mt-6 grid gap-6 xl:grid-cols-12">
       <div class="xl:col-span-7">
@@ -257,8 +397,8 @@
           </div>
 
           <div class="grid sm:grid-cols-12">
-            <div class="sm:col-span-7 space-y-5 p-7">
-              <div class="grid grid-cols-2 gap-5">
+            <div class="space-y-5 p-5 sm:col-span-7 sm:p-7">
+              <div class="grid grid-cols-2 gap-4 sm:gap-5">
                 <div><p class="text-[10px] uppercase tracking-widest text-slate2">Nama Pelari</p><p class="mt-1 text-sm font-bold text-slate1" x-text="user.nama"></p></div>
                 <div><p class="text-[10px] uppercase tracking-widest text-slate2">Nomor BIB</p><p class="display mt-1 text-xl text-maroon" x-text="user.bib"></p></div>
                 <div><p class="text-[10px] uppercase tracking-widest text-slate2">Kategori</p><p class="mt-1 text-sm font-bold text-slate1">21K · Half Marathon</p></div>
@@ -272,7 +412,7 @@
               </div>
             </div>
 
-            <div class="relative sm:col-span-5 flex flex-col items-center justify-center border-t border-dashed border-slate1/20 p-7 sm:border-l sm:border-t-0">
+            <div class="relative flex flex-col items-center justify-center border-t border-dashed border-slate1/20 p-6 sm:col-span-5 sm:border-l sm:border-t-0 sm:p-7">
               <div class="grid h-40 w-40 grid-cols-[repeat(21,1fr)] gap-[1px] rounded-lg bg-white p-2 ring-1 ring-slate1/10">
                 <template x-for="(c,i) in qr" :key="i">
                   <span class="aspect-square" :class="c ? 'bg-slate1' : 'bg-transparent'"></span>
@@ -456,8 +596,13 @@
       </div>
     </section>
 
-    <footer class="mt-10 border-t border-slate1/10 pt-6 text-[11px] uppercase tracking-widest text-slate2/60">
-      © 2027 Papua Peace Run · Satu Papua, Satu Langkah
+    <footer class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate1/10 pt-6 text-center text-[11px] uppercase tracking-widest text-slate2/60 sm:flex-row sm:text-left">
+      <p>© 2027 Papua Peace Run · Satu Papua, Satu Langkah</p>
+      <a href="https://nokensoft.com" target="_blank" rel="noopener noreferrer"
+         class="group flex items-center gap-2.5 rounded-full border border-slate1/10 px-4 py-2 transition hover:border-gold/60 hover:text-slate1">
+        <img src="./img/logo-nokensoft.png" alt="Nokensoft" class="h-5 w-auto opacity-80 transition group-hover:opacity-100">
+        <span class="normal-case tracking-normal">Powered by <span class="font-semibold text-maroon">Nokensoft.com</span></span>
+      </a>
     </footer>
   </main>
 </div>
@@ -473,10 +618,31 @@ function dashboard() {
     user: { nama: 'Yosina Rumbiak', panggilan: 'Yosina', inisial: 'YR', bib: 'PPR-2114', kode: 'PPR2027-21K-2114' },
 
     menu: [
-      { id: 'ringkasan', label: 'Ringkasan',  icon: 'fa-gauge-high' },
-      { id: 'tiket',     label: 'E-Ticket',   icon: 'fa-qrcode', badge: '1' },
-      { id: 'pesanan',   label: 'Pesanan',    icon: 'fa-receipt' },
-      { id: 'profil',    label: 'Data Pelari',icon: 'fa-user-pen' },
+      { id: 'ringkasan', label: 'Ringkasan',   icon: 'fa-gauge-high' },
+      { id: 'paket',     label: 'Pesan Paket', icon: 'fa-cart-shopping', badge: 'Baru' },
+      { id: 'tiket',     label: 'E-Ticket',    icon: 'fa-qrcode', badge: '1' },
+      { id: 'pesanan',   label: 'Pesanan',     icon: 'fa-receipt' },
+      { id: 'profil',    label: 'Data Pelari', icon: 'fa-user-pen' },
+    ],
+
+    langkahPesan: ['Pilih Paket', 'Pembayaran', 'Data Pelari'],
+    fee: 7500,
+    bayarVia: 'qris',
+    pesananSukses: false,
+
+    paket: [
+      { id: 'eb5',  name: 'Early Bird 5K',  desc: 'Fun & Family Run — kuota terbatas',     price: 185000, stock: 0,   qty: 0, soldOut: true },
+      { id: 'eb10', name: 'Early Bird 10K', desc: 'Community Run — kuota terbatas',        price: 255000, stock: 0,   qty: 0, soldOut: true },
+      { id: 'r5',   name: '5K',             desc: 'Fun & Family Run · flag off 06.30 WIT', price: 229000, stock: 184, qty: 0, soldOut: false },
+      { id: 'r10',  name: '10K',            desc: 'Community Run · flag off 06.00 WIT',    price: 319000, stock: 126, qty: 0, soldOut: false },
+      { id: 'r21',  name: '21K',            desc: 'Half Marathon · flag off 05.30 WIT',    price: 399000, stock: 78,  qty: 0, soldOut: false },
+      { id: 'r42',  name: '42K',            desc: 'Full Marathon · flag off 05.00 WIT',    price: 549000, stock: 41,  qty: 0, soldOut: false },
+    ],
+
+    metode: [
+      { id: 'qris', icon: 'fa-qrcode',            label: 'QRIS',            desc: 'Semua e-wallet & m-banking' },
+      { id: 'va',   icon: 'fa-building-columns',  label: 'Virtual Account', desc: 'BNI · Mandiri · BRI' },
+      { id: 'ewal', icon: 'fa-wallet',            label: 'E-Wallet',        desc: 'GoPay · OVO · DANA' },
     ],
 
     stats: [
@@ -520,6 +686,20 @@ function dashboard() {
       { label: 'Tampilkan nama di hasil publik', on: false },
     ],
 
+    get subtotal() {
+      return this.paket.reduce((s, t) => s + t.price * t.qty, 0);
+    },
+
+    rupiah(n) { return 'Rp ' + n.toLocaleString('id-ID'); },
+    tambah(i) { const t = this.paket[i]; if (!t.soldOut && t.qty < 1) t.qty++; },
+    kurang(i) { const t = this.paket[i]; if (t.qty > 0) t.qty--; },
+
+    bayar() {
+      if (this.subtotal === 0) return;
+      this.pesananSukses = true;
+      setTimeout(() => { this.pesananSukses = false; this.tab = 'tiket'; window.scrollTo({ top: 0, behavior: 'smooth' }); }, 2200);
+    },
+
     get progresPersen() {
       const done = this.progres.filter(p => p.done).length;
       return Math.round((done / this.progres.length) * 100);
@@ -541,6 +721,9 @@ function dashboard() {
     init() {
       const target = new Date('2027-03-20T05:00:00+09:00').getTime();
       this.countdown.days = Math.max(0, Math.floor((target - Date.now()) / 86400000));
+
+      const minta = new URLSearchParams(window.location.search).get('tab');
+      if (minta && this.menu.some(m => m.id === minta)) this.tab = minta;
     },
   }
 }

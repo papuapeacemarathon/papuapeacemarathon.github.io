@@ -156,7 +156,7 @@
 
   <!-- mobile menu -->
   <div x-show="menu" x-collapse x-cloak class="lg:hidden border-t border-white/10 bg-ink/95 backdrop-blur-xl">
-    <ul class="px-6 py-6 space-y-4">
+    <ul class="max-h-[70vh] space-y-4 overflow-y-auto px-6 py-6">
       <template x-for="l in nav" :key="l.href">
         <li><a :href="l.href" @click="menu=false" x-text="l.label" class="block display text-2xl text-cream/90 hover:text-gold transition"></a></li>
       </template>
@@ -195,8 +195,8 @@
     <path d="M0 130h800" />
   </svg>
 
-  <div class="relative z-10 mx-auto max-w-7xl px-5 pt-32 pb-24 w-full">
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-28 pt-28 sm:pb-24 sm:pt-32">
+    <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
       <!-- copy -->
       <div class="lg:col-span-7">
         <p data-reveal class="inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-ultra text-gold">
@@ -204,7 +204,7 @@
           Sabtu · 20 Maret 2027
         </p>
 
-        <h1 data-reveal data-reveal-delay="1" class="display mt-6 text-[clamp(3rem,9vw,7.5rem)]">
+        <h1 data-reveal data-reveal-delay="1" class="display mt-6 text-[clamp(2.5rem,10vw,7.5rem)]">
           <span class="block text-cream">Berlari</span>
           <span class="block gold-text">Berdampingan</span>
           <span class="block stroke-text">Sebagai Satu Papua</span>
@@ -216,22 +216,22 @@
           dari Jayapura hingga Muara Tami.
         </p>
 
-        <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-wrap items-center gap-4">
-          <a href="daftar.html" class="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-maroon to-brick px-8 py-4 text-sm font-bold uppercase tracking-widest shadow-xl shadow-maroon/30 hover:shadow-brick/40 transition-all duration-300">
+        <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+          <a href="daftar.html" class="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-maroon to-brick px-7 py-4 text-xs font-bold uppercase tracking-widest shadow-xl shadow-maroon/30 transition-all duration-300 hover:shadow-brick/40 sm:px-8 sm:text-sm">
             Ambil Slot Early Bird
             <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1.5"></i>
           </a>
-          <a href="#mitra" class="inline-flex items-center gap-3 rounded-full border border-cream/25 px-8 py-4 text-sm font-bold uppercase tracking-widest text-cream hover:bg-cream hover:text-ink transition-all duration-300">
+          <a href="#mitra" class="inline-flex items-center justify-center gap-3 rounded-full border border-cream/25 px-7 py-4 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-ink sm:px-8 sm:text-sm">
             <i class="fa-solid fa-handshake-angle"></i> Jadi Mitra
           </a>
         </div>
 
         <!-- quick facts -->
-        <dl data-reveal data-reveal-delay="4" class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10">
+        <dl data-reveal data-reveal-delay="4" class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4 lg:mt-12">
           <template x-for="f in facts" :key="f.label">
-            <div class="bg-ink/80 px-5 py-5">
-              <dt class="text-[10px] uppercase tracking-ultra text-gold/80" x-text="f.label"></dt>
-              <dd class="display mt-2 text-xl text-cream" x-text="f.value"></dd>
+            <div class="bg-ink/80 px-4 py-4 sm:px-5 sm:py-5">
+              <dt class="text-[9px] uppercase tracking-[0.2em] text-gold/80 sm:text-[10px] sm:tracking-ultra" x-text="f.label"></dt>
+              <dd class="display mt-2 text-lg text-cream sm:text-xl" x-text="f.value"></dd>
             </div>
           </template>
         </dl>
@@ -274,7 +274,7 @@
       <div class="flex items-center gap-10 pr-10">
         <template x-for="w in ['Satu Papua','5K','Damai','10K','Perjumpaan','21K','Persahabatan','42K','Kampung Perdamaian','20·03·2027']" :key="w">
           <span class="flex items-center gap-10">
-            <span class="display text-xl md:text-3xl whitespace-nowrap" x-text="w"></span>
+            <span class="display whitespace-nowrap text-lg sm:text-xl md:text-3xl" x-text="w"></span>
             <i class="fa-solid fa-shoe-prints text-gold/70 text-sm"></i>
           </span>
         </template>
@@ -284,12 +284,12 @@
 </div>
 
 <!-- ================= TENTANG ================= -->
-<section id="tentang" class="relative py-28 md:py-36 overflow-hidden">
+<section id="tentang" class="relative py-20 md:py-36 overflow-hidden">
   <div data-parallax="0.1" class="absolute -right-24 top-10 h-96 w-96 rounded-full bg-maroon/20 blur-3xl"></div>
   <div class="relative mx-auto max-w-7xl px-5 grid lg:grid-cols-12 gap-14">
     <div class="lg:col-span-5">
       <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">01 — Tentang</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2.4rem,5.5vw,4.5rem)] text-cream">
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
         Dari pulau perang<br><span class="gold-text">menjadi pulau damai</span>
       </h2>
       <div data-reveal data-reveal-delay="2" class="mt-8 h-px w-28 bg-gradient-to-r from-gold to-transparent"></div>
@@ -338,7 +338,7 @@
 
   <div class="relative z-10 mx-auto max-w-5xl px-6 text-center">
     <i data-reveal class="fa-solid fa-dove text-gold text-3xl"></i>
-    <p data-reveal data-reveal-delay="1" class="display mt-7 text-[clamp(1.9rem,5vw,4rem)] leading-[1.05] text-cream">
+    <p data-reveal data-reveal-delay="1" class="display mt-7 text-[clamp(1.5rem,5.5vw,4rem)] leading-[1.05] text-cream">
       “Jalan yang ditempuh panjang, dan <span class="gold-text">tidak ada yang menyelesaikannya sendirian.</span>”
     </p>
     <p data-reveal data-reveal-delay="2" class="mt-7 text-sand/60 text-sm tracking-widest uppercase">Papua Peace Run 2027</p>
@@ -346,12 +346,12 @@
 </section>
 
 <!-- ================= PENGALAMAN / RUTE ================= -->
-<section id="rute" class="relative py-28 md:py-36">
+<section id="rute" class="relative py-20 md:py-36">
   <div class="mx-auto max-w-7xl px-5">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
       <div>
         <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">02 — Pengalaman</p>
-        <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2.4rem,5.5vw,4.5rem)] text-cream">
+        <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
           Satu Lintasan,<br><span class="stroke-text">Tiga Perjumpaan</span>
         </h2>
       </div>
@@ -388,14 +388,14 @@
 </section>
 
 <!-- ================= KATEGORI ================= -->
-<section id="kategori" class="relative py-28 md:py-36 overflow-hidden">
+<section id="kategori" class="relative py-20 md:py-36 overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(90%_60%_at_50%_0%,#1E0F0D_0%,#0B0807_70%)]"></div>
   <div data-parallax="0.14" class="absolute inset-x-0 -top-24 -bottom-24 motif opacity-[.08]"></div>
 
   <div class="relative mx-auto max-w-7xl px-5">
     <div class="text-center">
       <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">03 — Kategori</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2.4rem,5.5vw,4.5rem)] text-cream">
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
         Pilih <span class="gold-text">Jarakmu</span>
       </h2>
       <p data-reveal data-reveal-delay="2" class="mx-auto mt-5 max-w-xl text-sand/65">
@@ -431,14 +431,14 @@
 </section>
 
 <!-- ================= DAMPAK / ANGKA ================= -->
-<section id="dampak" class="relative py-24 md:py-32 overflow-hidden border-y border-white/10">
+<section id="dampak" class="relative py-16 md:py-32 overflow-hidden border-y border-white/10">
   <div class="absolute inset-0 bg-[linear-gradient(120deg,#6E1515_0%,#2A1210_55%,#0B0807_100%)]"></div>
   <div data-parallax="0.18" class="absolute inset-x-0 -top-24 -bottom-24 motif opacity-[.12]"></div>
 
   <div class="relative mx-auto max-w-7xl px-5">
     <div class="max-w-2xl">
       <p data-reveal class="text-[11px] uppercase tracking-ultra text-sun">04 — Dampak</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2.2rem,5vw,4rem)] text-cream">
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(1.9rem,6vw,4rem)] text-cream">
         Pesan perdamaian menjadi<br><span class="gold-text">pengalaman nyata</span>
       </h2>
     </div>
@@ -466,13 +466,13 @@
 </section>
 
 <!-- ================= KAMPUNG PERDAMAIAN ================= -->
-<section id="kampung" class="relative py-28 md:py-36 overflow-hidden">
+<section id="kampung" class="relative py-20 md:py-36 overflow-hidden">
   <div data-parallax="0.12" class="absolute -left-32 bottom-0 h-[30rem] w-[30rem] rounded-full bg-gold/10 blur-3xl"></div>
 
   <div class="relative mx-auto max-w-7xl px-5 grid lg:grid-cols-2 gap-16 items-center">
     <div>
       <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">05 — Setelah Garis Finis</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2.4rem,5.5vw,4.5rem)] text-cream">
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
         Kampung<br><span class="gold-text">Perdamaian</span>
       </h2>
       <p data-reveal data-reveal-delay="2" class="mt-7 text-sand/70 leading-relaxed">
@@ -512,13 +512,13 @@
 </section>
 
 <!-- ================= MITRA / SPONSORSHIP ================= -->
-<section id="mitra" class="relative py-28 md:py-36 overflow-hidden">
+<section id="mitra" class="relative py-20 md:py-36 overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_100%,#1E0F0D_0%,#0B0807_70%)]"></div>
 
   <div class="relative mx-auto max-w-7xl px-5">
     <div class="text-center">
       <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">06 — Kemitraan</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2.4rem,5.5vw,4.5rem)] text-cream">
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
         Berjalan <span class="gold-text">Bersama Kami</span>
       </h2>
       <p data-reveal data-reveal-delay="2" class="mx-auto mt-5 max-w-2xl text-sand/65">
@@ -563,11 +563,11 @@
 </section>
 
 <!-- ================= FAQ ================= -->
-<section id="faq" class="relative py-28 md:py-36">
+<section id="faq" class="relative py-20 md:py-36">
   <div class="mx-auto max-w-4xl px-5">
     <div class="text-center">
       <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">07 — FAQ</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2.2rem,5vw,4rem)] text-cream">Pertanyaan Umum</h2>
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(1.9rem,6vw,4rem)] text-cream">Pertanyaan Umum</h2>
     </div>
 
     <div class="mt-14 divide-y divide-white/10 border-y border-white/10" x-data="{ open: 0 }">
@@ -591,7 +591,7 @@
 </section>
 
 <!-- ================= CTA DAFTAR ================= -->
-<section id="daftar" class="relative overflow-hidden py-28 md:py-40 grain">
+<section id="daftar" class="relative overflow-hidden py-20 md:py-40 grain">
   <div class="absolute inset-0 bg-[linear-gradient(180deg,#0B0807_0%,#5E1413_50%,#0B0807_100%)]"></div>
   <div data-parallax="0.25" class="absolute inset-x-0 -top-28 -bottom-28 motif opacity-[.16]"></div>
   <svg data-parallax="0.08" class="absolute bottom-0 w-full text-ink" viewBox="0 0 1440 200" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
@@ -600,15 +600,24 @@
 
   <div class="relative z-10 mx-auto max-w-4xl px-5 text-center">
     <img data-reveal src="./img/logo.png" alt="" class="mx-auto h-28 md:h-36 drop-shadow-[0_18px_40px_rgba(0,0,0,.6)]">
-    <h2 data-reveal data-reveal-delay="1" class="display mt-8 text-[clamp(2.4rem,7vw,5.5rem)] text-cream">
+    <h2 data-reveal data-reveal-delay="1" class="display mt-8 text-[clamp(2rem,8vw,5.5rem)] text-cream">
       Lintasi Garis Itu<br><span class="gold-text">Bersama Kami</span>
     </h2>
     <p data-reveal data-reveal-delay="2" class="mt-6 text-sand/75">
       5K · 10K · 21K · 42K — Jayapura &amp; Muara Tami, Papua · Sabtu, 20 Maret 2027
     </p>
 
+    <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="daftar.html" class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-maroon to-brick px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream shadow-xl shadow-maroon/30 transition-all duration-300 hover:from-brick hover:to-ember sm:w-auto">
+        <i class="fa-solid fa-person-running"></i> Daftar &amp; Pilih Paket
+      </a>
+      <a href="login.html" class="inline-flex w-full items-center justify-center gap-3 rounded-full border border-cream/25 px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-ink sm:w-auto">
+        <i class="fa-solid fa-right-to-bracket"></i> Sudah punya akun
+      </a>
+    </div>
+
     <form data-reveal data-reveal-delay="3" @submit.prevent="subscribe"
-          class="mx-auto mt-10 flex max-w-xl flex-col sm:flex-row gap-3">
+          class="mx-auto mt-6 flex max-w-xl flex-col gap-3 sm:flex-row">
       <input type="email" x-model="email" required placeholder="Alamat email kamu"
              class="flex-1 rounded-full border border-white/20 bg-ink/60 px-6 py-4 text-sm text-cream placeholder:text-sand/40 outline-none focus:border-gold transition">
       <button type="submit"
@@ -659,16 +668,48 @@
   </div>
 
   <div class="border-t border-white/10">
-    <div class="mx-auto max-w-7xl px-5 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] uppercase tracking-widest text-sand/40">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-6 text-center text-[11px] uppercase tracking-widest text-sand/40 sm:flex-row sm:text-left">
       <p>© 2027 Papua Peace Run. Satu Papua, Satu Langkah.</p>
-      <p>Jayapura · Papua · Indonesia</p>
+      <a href="https://nokensoft.com" target="_blank" rel="noopener noreferrer"
+         class="group flex items-center gap-2.5 rounded-full border border-white/10 px-4 py-2 transition hover:border-gold/40 hover:text-sand/80">
+        <img src="./img/logo-nokensoft.png" alt="Nokensoft" class="h-5 w-auto opacity-80 transition group-hover:opacity-100">
+        <span class="normal-case tracking-normal">Powered by <span class="font-semibold text-gold">Nokensoft.com</span></span>
+      </a>
     </div>
   </div>
 </footer>
 
+<!-- ================= HITUNG MUNDUR MENGAMBANG ================= -->
+<div x-show="floatTimer" x-cloak x-transition.opacity
+     class="fixed bottom-20 right-4 z-[70] sm:bottom-6 sm:right-[5.25rem]">
+  <div class="flex items-center gap-2 rounded-2xl border border-gold/30 bg-ink/90 px-3 py-2 shadow-2xl shadow-black/50 backdrop-blur-xl sm:gap-3 sm:px-4 sm:py-3">
+    <span class="hidden sm:grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-maroon to-brick text-gold">
+      <i class="fa-solid fa-stopwatch text-sm"></i>
+    </span>
+    <div>
+      <p class="text-[8px] font-bold uppercase tracking-[0.2em] text-gold/80 sm:text-[9px]">Menuju 20 Mar 2027</p>
+      <div class="mt-1 flex items-end gap-1.5 sm:gap-2">
+        <template x-for="u in [['days','H'],['hours','J'],['mins','M'],['secs','D']]" :key="u[0]">
+          <span class="flex items-baseline gap-0.5">
+            <span class="display text-base leading-none text-cream sm:text-lg" x-text="String(countdown[u[0]]).padStart(2,'0')"></span>
+            <span class="text-[8px] font-bold text-gold/70 sm:text-[9px]" x-text="u[1]"></span>
+          </span>
+        </template>
+      </div>
+    </div>
+    <a href="daftar.html" class="ml-1 hidden rounded-full bg-gradient-to-r from-maroon to-brick px-3 py-2 text-[9px] font-bold uppercase tracking-widest text-cream hover:from-brick hover:to-ember transition md:inline-block">
+      Daftar
+    </a>
+    <button @click="floatTimer = false" aria-label="Tutup hitung mundur"
+            class="grid h-6 w-6 shrink-0 place-items-center rounded-full text-sand/50 hover:bg-white/10 hover:text-cream transition">
+      <i class="fa-solid fa-xmark text-[10px]"></i>
+    </button>
+  </div>
+</div>
+
 <!-- back to top -->
 <button @click="window.scrollTo({top:0,behavior:'smooth'})" x-show="scrolled" x-cloak x-transition
-        class="fixed bottom-6 right-6 z-[70] grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-xl shadow-black/40 hover:from-brick hover:to-ember transition">
+        class="fixed bottom-4 right-4 z-[70] grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-xl shadow-black/40 hover:from-brick hover:to-ember transition sm:bottom-6 sm:right-6">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
 
@@ -677,6 +718,7 @@ function site() {
   return {
     menu: false,
     scrolled: false,
+    floatTimer: true,
     progress: 0,
     email: '',
     sent: false,
