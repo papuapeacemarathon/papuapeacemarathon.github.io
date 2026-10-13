@@ -19,14 +19,14 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="font-sans" x-data="program()">
+<body class="font-sans pb-20 lg:pb-0" x-data="program()">
 
 <!-- ================= HEADER ================= -->
 <header class="sticky top-0 z-50 border-b border-white/10 bg-ink/95 backdrop-blur-xl">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5">
+  <nav class="mx-auto flex max-w-7xl items-center justify-center gap-3 px-4 py-3 sm:px-5 lg:justify-between">
     <a href="index.html" class="flex items-center gap-3">
-      <img src="./img/logo.png" alt="Papua Peace Run 2027" class="h-9 sm:h-11">
-      <span class="hidden sm:block leading-tight">
+      <img src="./img/logo.png" alt="Papua Peace Run 2027" class="h-10 sm:h-11">
+      <span class="hidden leading-tight lg:block">
         <span class="block display text-sm tracking-widest text-cream">Papua Peace Run</span>
         <span class="block text-[10px] tracking-ultra text-gold/80">2027 · JAYAPURA</span>
       </span>
@@ -40,26 +40,15 @@
       <li><a href="#daftar-masuk" class="text-gold">Pendaftaran</a></li>
     </ul>
 
-    <div class="flex items-center gap-2">
-      <a href="#daftar-masuk" class="inline-flex rounded-full btn-primary px-4 py-2.5 text-[10px] font-bold uppercase tracking-widest sm:px-5 sm:text-[11px]">
-        <i class="fa-solid fa-person-running sm:mr-1"></i> <span class="hidden sm:inline">Daftar</span>
+    <div class="hidden items-center gap-2 lg:flex">
+      <a href="login.html" class="inline-flex items-center gap-2 rounded-full border border-cream/25 px-5 py-2.5 text-[11px] font-bold uppercase tracking-widest text-cream transition hover:bg-cream hover:text-ink">
+        <i class="fa-solid fa-right-to-bracket"></i> Masuk
       </a>
-      <button @click="menu = !menu" class="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-white/15 text-cream">
-        <i class="fa-solid" :class="menu ? 'fa-xmark' : 'fa-bars'"></i>
-      </button>
+      <a href="#daftar-masuk" class="inline-flex rounded-full btn-primary px-5 py-2.5 text-[11px] font-bold uppercase tracking-widest">
+        <i class="fa-solid fa-person-running mr-1"></i> Daftar
+      </a>
     </div>
   </nav>
-
-  <div x-show="menu" x-collapse x-cloak class="lg:hidden border-t border-white/10 bg-ink/95">
-    <ul class="grid grid-cols-2 gap-2 px-4 py-4 text-[11px] font-bold uppercase tracking-widest text-cream/80">
-      <li><a @click="menu=false" href="index.html" class="block rounded-xl bg-white/5 px-3 py-3">Beranda</a></li>
-      <li><a @click="menu=false" href="#program" class="block rounded-xl bg-white/5 px-3 py-3">Detail Program</a></li>
-      <li><a @click="menu=false" href="#paket" class="block rounded-xl bg-white/5 px-3 py-3">Paket</a></li>
-      <li><a @click="menu=false" href="#peta" class="block rounded-xl bg-white/5 px-3 py-3">Lokasi</a></li>
-      <li><a @click="menu=false" href="#daftar-masuk" class="block rounded-xl bg-white/5 px-3 py-3">Daftar / Masuk</a></li>
-      <li><a @click="menu=false" href="dashboard.html" class="block rounded-xl bg-white/5 px-3 py-3">Dashboard</a></li>
-    </ul>
-  </div>
 </header>
 
 <!-- ================= BREADCRUMB ================= -->
@@ -166,19 +155,6 @@
               Papua Peace Run 2027 adalah gerakan lari lintas komunitas yang mengajak Papua dan Indonesia untuk mengalami,
               membangun, dan merayakan perdamaian bersama — menyusuri Jayapura, Teluk Youtefa, hingga Muara Tami.
             </p>
-          </div>
-
-          <!-- countdown ringkas -->
-          <div class="mt-5 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#6E1515,#2B1210)] px-4 py-4 sm:px-6 sm:py-5">
-            <p class="text-center text-[10px] uppercase tracking-ultra text-sand/70">Menuju garis start</p>
-            <div class="mt-3 grid grid-cols-4 gap-2 text-center">
-              <template x-for="u in [['days','Hari'],['hours','Jam'],['mins','Menit'],['secs','Detik']]" :key="u[0]">
-                <div class="rounded-xl bg-white/10 py-2">
-                  <div class="display text-lg text-cream sm:text-xl" x-text="String(countdown[u[0]]).padStart(2,'0')"></div>
-                  <div class="text-[9px] uppercase tracking-widest text-sand/60" x-text="u[1]"></div>
-                </div>
-              </template>
-            </div>
           </div>
         </div>
 
@@ -457,10 +433,10 @@
 
 <!-- ================= FOOTER ================= -->
 <footer class="bg-ink text-cream">
-  <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-5 sm:py-14 md:grid-cols-12">
+  <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 text-center sm:px-5 sm:py-14 md:grid-cols-12 md:text-left">
     <div class="md:col-span-5">
-      <img src="./img/logo.png" alt="Papua Peace Run 2027" class="h-14 sm:h-16">
-      <p class="mt-5 max-w-sm text-sm leading-relaxed text-sand/60">
+      <img src="./img/logo.png" alt="Papua Peace Run 2027" class="mx-auto h-14 sm:h-16 md:mx-0">
+      <p class="mx-auto mt-5 max-w-sm text-sm leading-relaxed text-sand/60 md:mx-0">
         Gerakan lari lintas komunitas yang mengajak Papua dan Indonesia untuk mengalami, membangun, dan merayakan perdamaian bersama.
       </p>
     </div>
@@ -476,14 +452,14 @@
     <div class="md:col-span-4">
       <h4 class="display text-sm tracking-ultra text-gold">Kontak Panitia</h4>
       <ul class="mt-5 space-y-4 text-sm text-sand/65">
-        <li class="flex gap-3"><i class="fa-solid fa-location-dot mt-1 text-gold"></i><span>Jayapura &amp; Muara Tami, Papua<br>Finish: Vtekya Restaurant</span></li>
-        <li class="flex gap-3"><i class="fa-solid fa-envelope mt-1 text-gold"></i><a href="mailto:hello@papuapeacerun.com" class="link-underline hover:text-cream">hello@papuapeacerun.com</a></li>
+        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-location-dot mt-1 text-gold"></i><span>Jayapura &amp; Muara Tami, Papua<br>Finish: Vtekya Restaurant</span></li>
+        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-envelope mt-1 text-gold"></i><a href="mailto:hello@papuapeacerun.com" class="link-underline hover:text-cream">hello@papuapeacerun.com</a></li>
       </ul>
     </div>
   </div>
   <div class="border-t border-white/10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 text-center text-[11px] uppercase tracking-widest text-sand/40 sm:flex-row sm:px-5 sm:text-left">
-      <p>© 2027 Papua Peace Run. Satu Papua, Satu Langkah.</p>
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-6 text-center text-[11px] uppercase tracking-widest text-sand/40 sm:px-5">
+      <p>© 2027 Papua Peace Run · Satu Papua, Satu Langkah · Jayapura, Indonesia</p>
       <a href="https://nokensoft.com" target="_blank" rel="noopener noreferrer"
          class="group flex items-center gap-2.5 rounded-full border border-white/10 px-4 py-2 transition hover:border-gold/40 hover:text-sand/80">
         <img src="./img/logo-nokensoft.png" alt="Nokensoft" class="h-5 w-auto opacity-80 transition group-hover:opacity-100">
@@ -495,7 +471,7 @@
 
 <!-- ================= HITUNG MUNDUR MENGAMBANG ================= -->
 <div x-show="floatTimer" x-cloak x-transition.opacity
-     class="fixed bottom-20 right-4 z-[70] sm:bottom-6 sm:right-[5.25rem]">
+     class="fixed bottom-[9.25rem] right-4 z-[70] lg:bottom-6 lg:right-[5.25rem]">
   <div class="flex items-center gap-2 rounded-2xl border border-gold/30 bg-ink/90 px-3 py-2 shadow-2xl shadow-black/50 backdrop-blur-xl sm:gap-3 sm:px-4 sm:py-3">
     <span class="hidden sm:grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-maroon to-brick text-gold">
       <i class="fa-solid fa-stopwatch text-sm"></i>
@@ -523,14 +499,37 @@
 
 <!-- back to top -->
 <button @click="window.scrollTo({top:0,behavior:'smooth'})" x-show="scrolled" x-cloak x-transition
-        class="fixed bottom-4 right-4 z-[70] grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-xl shadow-black/40 transition hover:from-brick hover:to-ember sm:bottom-6 sm:right-6">
+        class="fixed bottom-[5.25rem] right-4 z-[70] grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-xl shadow-black/40 transition hover:from-brick hover:to-ember lg:bottom-6 lg:right-6">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
+
+<!-- ================= NAVIGASI BAWAH (MOBILE) ================= -->
+<nav class="fixed inset-x-0 bottom-0 z-[80] border-t border-white/10 bg-ink/95 backdrop-blur-xl lg:hidden">
+  <div class="grid grid-cols-5 items-end px-1 pb-[max(0.4rem,env(safe-area-inset-bottom))] pt-2 text-[9px] font-bold uppercase tracking-widest text-sand/55">
+    <a href="index.html" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-house text-base"></i> Beranda
+    </a>
+    <a href="#program" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-circle-info text-base"></i> Program
+    </a>
+    <a href="#daftar-masuk" class="-mt-7 flex flex-col items-center gap-1 text-gold">
+      <span class="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-lg shadow-maroon/40 ring-4 ring-ink">
+        <i class="fa-solid fa-user-plus text-lg"></i>
+      </span>
+      Daftar
+    </a>
+    <a href="#paket" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-tags text-base"></i> Paket
+    </a>
+    <a href="#peta" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-location-dot text-base"></i> Lokasi
+    </a>
+  </div>
+</nav>
 
 <script>
 function program() {
   return {
-    menu: false,
     scrolled: false,
     floatTimer: true,
     mode: 'register',

@@ -114,7 +114,7 @@
 </style>
 </head>
 
-<body x-data="site()" x-init="init()" class="font-sans antialiased relative">
+<body x-data="site()" x-init="init()" class="font-sans antialiased relative pb-20 lg:pb-0">
 
 <!-- ================= SCROLL PROGRESS ================= -->
 <div class="fixed top-0 left-0 right-0 h-[3px] z-[90] bg-transparent">
@@ -124,12 +124,12 @@
 <!-- ================= NAVBAR ================= -->
 <header class="fixed inset-x-0 top-0 z-[80] transition-all duration-500"
         :class="scrolled ? 'bg-ink/90 backdrop-blur-xl border-b border-white/10 py-2' : 'bg-transparent py-4'">
-  <nav class="mx-auto max-w-7xl px-5 flex items-center justify-between">
-    <a href="#hero" class="flex items-center gap-3 group">
+  <nav class="mx-auto flex max-w-7xl items-center justify-center px-5 lg:justify-between">
+    <a href="#hero" class="group flex items-center gap-3">
       <img src="./img/logo.png" alt="Papua Peace Run 2027"
            class="transition-all duration-500 drop-shadow-[0_6px_18px_rgba(201,151,43,.25)]"
            :class="scrolled ? 'h-11' : 'h-14'">
-      <span class="hidden sm:block leading-tight">
+      <span class="hidden lg:block leading-tight">
         <span class="block display text-sm tracking-widest text-cream">Papua Peace Run</span>
         <span class="block text-[10px] tracking-ultra text-gold/80">2027 · JAYAPURA</span>
       </span>
@@ -141,29 +141,15 @@
       </template>
     </ul>
 
-    <div class="flex items-center gap-3">
-      <a href="login.html" class="hidden md:inline-flex items-center gap-2 rounded-full border border-cream/25 px-5 py-2.5 text-xs font-bold tracking-widest uppercase text-cream hover:bg-cream hover:text-ink transition-all duration-300">
+    <div class="hidden items-center gap-3 lg:flex">
+      <a href="login.html" class="inline-flex items-center gap-2 rounded-full border border-cream/25 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-ink">
         <i class="fa-solid fa-right-to-bracket"></i> Masuk
       </a>
-      <a href="daftar.html" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-maroon to-brick px-5 py-2.5 text-xs font-bold tracking-widest uppercase text-cream shadow-lg shadow-maroon/30 hover:from-brick hover:to-ember transition-all duration-300">
+      <a href="daftar.html" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-maroon to-brick px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-cream shadow-lg shadow-maroon/30 transition-all duration-300 hover:from-brick hover:to-ember">
         <i class="fa-solid fa-person-running"></i> Daftar
       </a>
-      <button @click="menu = !menu" class="lg:hidden h-11 w-11 grid place-items-center rounded-full border border-white/15 text-cream">
-        <i class="fa-solid" :class="menu ? 'fa-xmark' : 'fa-bars'"></i>
-      </button>
     </div>
   </nav>
-
-  <!-- mobile menu -->
-  <div x-show="menu" x-collapse x-cloak class="lg:hidden border-t border-white/10 bg-ink/95 backdrop-blur-xl">
-    <ul class="max-h-[70vh] space-y-4 overflow-y-auto px-6 py-6">
-      <template x-for="l in nav" :key="l.href">
-        <li><a :href="l.href" @click="menu=false" x-text="l.label" class="block display text-2xl text-cream/90 hover:text-gold transition"></a></li>
-      </template>
-      <li><a href="login.html" @click="menu=false" class="block display text-2xl text-cream/90 hover:text-gold transition">Masuk</a></li>
-      <li class="pt-2"><a href="daftar.html" @click="menu=false" class="block text-center rounded-full bg-gradient-to-r from-maroon to-brick py-3 text-sm font-bold tracking-widest uppercase">Daftar Sekarang</a></li>
-    </ul>
-  </div>
 </header>
 
 <!-- ================= HERO ================= -->
@@ -237,24 +223,12 @@
         </dl>
       </div>
 
-      <!-- logo + countdown -->
+      <!-- logo -->
       <div class="lg:col-span-5">
         <div data-parallax="-0.08" class="relative mx-auto max-w-md">
           <div class="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(201,151,43,.22),transparent_65%)] blur-2xl"></div>
           <img src="./img/logo.png" alt="Logo Papua Peace Run 2027"
                class="floaty relative w-full drop-shadow-[0_25px_60px_rgba(0,0,0,.65)]">
-        </div>
-
-        <div data-reveal data-reveal-delay="2" class="mt-8 rounded-3xl border border-white/10 bg-coal/70 backdrop-blur p-6">
-          <p class="text-center text-[10px] uppercase tracking-ultra text-sand/60">Hitung mundur menuju garis start</p>
-          <div class="mt-4 grid grid-cols-4 gap-3 text-center">
-            <template x-for="u in [['days','Hari'],['hours','Jam'],['mins','Menit'],['secs','Detik']]" :key="u[0]">
-              <div class="rounded-xl border border-gold/15 bg-ink/60 py-3">
-                <div class="display text-2xl md:text-3xl gold-text" x-text="String(countdown[u[0]]).padStart(2,'0')"></div>
-                <div class="mt-1 text-[9px] uppercase tracking-widest text-sand/55" x-text="u[1]"></div>
-              </div>
-            </template>
-          </div>
         </div>
       </div>
     </div>
@@ -632,14 +606,14 @@
 
 <!-- ================= FOOTER ================= -->
 <footer id="kontak" class="relative border-t border-white/10 bg-ink">
-  <div class="mx-auto max-w-7xl px-5 py-16 grid md:grid-cols-12 gap-12">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 text-center md:grid-cols-12 md:gap-12 md:py-16 md:text-left">
     <div class="md:col-span-5">
-      <img src="./img/logo.png" alt="Papua Peace Run 2027" class="h-20">
-      <p class="mt-6 max-w-sm text-sm leading-relaxed text-sand/60">
+      <img src="./img/logo.png" alt="Papua Peace Run 2027" class="mx-auto h-20 md:mx-0">
+      <p class="mx-auto mt-6 max-w-sm text-sm leading-relaxed text-sand/60 md:mx-0">
         Gerakan lari lintas komunitas yang mengajak Papua dan Indonesia untuk mengalami, membangun,
         dan merayakan perdamaian bersama.
       </p>
-      <div class="mt-7 flex gap-3">
+      <div class="mt-7 flex justify-center gap-3 md:justify-start">
         <template x-for="s in ['instagram','whatsapp','youtube','tiktok']" :key="s">
           <a href="#" :aria-label="s" class="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-sand/70 hover:bg-gold hover:text-ink hover:border-gold transition">
             <i class="fa-brands" :class="'fa-'+s"></i>
@@ -660,16 +634,16 @@
     <div class="md:col-span-4">
       <h4 class="display text-sm tracking-ultra text-gold">Kontak Panitia</h4>
       <ul class="mt-5 space-y-4 text-sm text-sand/65">
-        <li class="flex gap-3"><i class="fa-solid fa-location-dot text-gold mt-1"></i><span>Jayapura &amp; Muara Tami, Papua<br>Finish: Vtekya Restaurant</span></li>
-        <li class="flex gap-3"><i class="fa-solid fa-envelope text-gold mt-1"></i><a href="mailto:hello@papuapeacerun.com" class="link-underline hover:text-cream">hello@papuapeacerun.com</a></li>
-        <li class="flex gap-3"><i class="fa-solid fa-phone text-gold mt-1"></i><a href="#" class="link-underline hover:text-cream">+62 8xx-xxxx-xxxx</a></li>
+        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-location-dot mt-1 text-gold"></i><span>Jayapura &amp; Muara Tami, Papua<br>Finish: Vtekya Restaurant</span></li>
+        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-envelope mt-1 text-gold"></i><a href="mailto:hello@papuapeacerun.com" class="link-underline hover:text-cream">hello@papuapeacerun.com</a></li>
+        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-phone mt-1 text-gold"></i><a href="#" class="link-underline hover:text-cream">+62 8xx-xxxx-xxxx</a></li>
       </ul>
     </div>
   </div>
 
   <div class="border-t border-white/10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 py-6 text-center text-[11px] uppercase tracking-widest text-sand/40 sm:flex-row sm:text-left">
-      <p>© 2027 Papua Peace Run. Satu Papua, Satu Langkah.</p>
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-3 px-5 py-6 text-center text-[11px] uppercase tracking-widest text-sand/40">
+      <p>© 2027 Papua Peace Run · Satu Papua, Satu Langkah · Jayapura, Indonesia</p>
       <a href="https://nokensoft.com" target="_blank" rel="noopener noreferrer"
          class="group flex items-center gap-2.5 rounded-full border border-white/10 px-4 py-2 transition hover:border-gold/40 hover:text-sand/80">
         <img src="./img/logo-nokensoft.png" alt="Nokensoft" class="h-5 w-auto opacity-80 transition group-hover:opacity-100">
@@ -681,7 +655,7 @@
 
 <!-- ================= HITUNG MUNDUR MENGAMBANG ================= -->
 <div x-show="floatTimer" x-cloak x-transition.opacity
-     class="fixed bottom-20 right-4 z-[70] sm:bottom-6 sm:right-[5.25rem]">
+     class="fixed bottom-[9.25rem] right-4 z-[70] lg:bottom-6 lg:right-[5.25rem]">
   <div class="flex items-center gap-2 rounded-2xl border border-gold/30 bg-ink/90 px-3 py-2 shadow-2xl shadow-black/50 backdrop-blur-xl sm:gap-3 sm:px-4 sm:py-3">
     <span class="hidden sm:grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-maroon to-brick text-gold">
       <i class="fa-solid fa-stopwatch text-sm"></i>
@@ -709,14 +683,37 @@
 
 <!-- back to top -->
 <button @click="window.scrollTo({top:0,behavior:'smooth'})" x-show="scrolled" x-cloak x-transition
-        class="fixed bottom-4 right-4 z-[70] grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-xl shadow-black/40 hover:from-brick hover:to-ember transition sm:bottom-6 sm:right-6">
+        class="fixed bottom-[5.25rem] right-4 z-[70] grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-xl shadow-black/40 transition hover:from-brick hover:to-ember lg:bottom-6 lg:right-6">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
+
+<!-- ================= NAVIGASI BAWAH (MOBILE) ================= -->
+<nav class="fixed inset-x-0 bottom-0 z-[80] border-t border-white/10 bg-ink/95 backdrop-blur-xl lg:hidden">
+  <div class="grid grid-cols-5 items-end px-1 pb-[max(0.4rem,env(safe-area-inset-bottom))] pt-2 text-[9px] font-bold uppercase tracking-widest text-sand/55">
+    <a href="#hero" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-house text-base"></i> Beranda
+    </a>
+    <a href="#kategori" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-person-running text-base"></i> Kategori
+    </a>
+    <a href="daftar.html" class="-mt-7 flex flex-col items-center gap-1 text-gold">
+      <span class="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-lg shadow-maroon/40 ring-4 ring-ink">
+        <i class="fa-solid fa-ticket text-lg"></i>
+      </span>
+      Daftar
+    </a>
+    <a href="#mitra" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-handshake-angle text-base"></i> Mitra
+    </a>
+    <a href="login.html" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-right-to-bracket text-base"></i> Masuk
+    </a>
+  </div>
+</nav>
 
 <script>
 function site() {
   return {
-    menu: false,
     scrolled: false,
     floatTimer: true,
     progress: 0,
