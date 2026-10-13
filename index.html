@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Papua Peace Run 2027 — Berlari Berdampingan, Merayakan Perdamaian</title>
-<meta name="description" content="Papua Peace Run 2027 — gerakan lari lintas komunitas di Jayapura & Muara Tami, Papua. 5K, 10K, 21K, 42K. Sabtu, 20 Maret 2027." />
-<meta property="og:title" content="Papua Peace Run 2027" />
+<title>Papua Peace Run 2027 — Perdamaian Garis Finis Kita Bersama</title>
+<meta name="description" content="Papua Peace Run 2027 — Perdamaian Garis Finis Kita Bersama. Gerakan lari lintas komunitas di Jayapura &amp; Muara Tami, Papua. 5K, 10K, 21K, 42K. Sabtu, 20 Maret 2027." />
+<meta property="og:title" content="Papua Peace Run 2027 — Perdamaian Garis Finis Kita Bersama" />
 <meta property="og:description" content="Dari pulau perang menjadi pulau damai. Berlari berdampingan sebagai satu Papua." />
 <meta property="og:image" content="./img/logo.png" />
 <link rel="icon" href="./img/logo.png" />
@@ -139,7 +139,7 @@
 
     <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
        class="hidden items-center gap-2 rounded-full bg-gold px-6 py-3 text-xs font-bold uppercase tracking-widest text-forest shadow-lg shadow-gold/20 transition-all duration-300 hover:bg-cream lg:inline-flex">
-      Register Now <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      Daftar Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
     </a>
   </nav>
 </header>
@@ -184,7 +184,12 @@
           <span class="block stroke-cream">Sebagai Satu Papua</span>
         </h1>
 
-        <p data-reveal data-reveal-delay="2" class="mt-7 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
+        <p data-reveal data-reveal-delay="2" class="display mt-6 flex items-center gap-3 text-[clamp(1rem,2.6vw,1.6rem)] tracking-[0.12em] text-gold">
+          <span class="hidden h-px w-10 bg-gold sm:block"></span>
+          Perdamaian Garis Finis Kita Bersama
+        </p>
+
+        <p data-reveal data-reveal-delay="2" class="mt-6 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
           Papua Peace Run 2027 adalah gerakan lari lintas komunitas yang mengajak Papua dan Indonesia
           untuk <span class="font-semibold text-gold">mengalami, membangun, dan merayakan perdamaian</span> bersama —
           dari Jayapura hingga Muara Tami.
@@ -193,7 +198,7 @@
         <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
           <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
              class="group inline-flex items-center justify-center gap-3 rounded-full bg-gold px-8 py-4 text-xs font-bold uppercase tracking-widest text-forest shadow-xl shadow-gold/25 transition-all duration-300 hover:bg-cream sm:text-sm">
-            Register Now
+            Daftar Sekarang
             <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1.5"></i>
           </a>
           <a href="#mitra" class="inline-flex items-center justify-center gap-3 rounded-full border border-cream/30 px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-forest sm:text-sm">
@@ -231,7 +236,7 @@
   <div class="marquee relative items-center text-forest">
     <template x-for="i in 2" :key="i">
       <div class="flex items-center gap-10 pr-10">
-        <template x-for="w in ['Satu Papua','5K','Damai','10K','Perjumpaan','21K','Persahabatan','42K','Kampung Perdamaian','20·03·2027']" :key="w">
+        <template x-for="w in ['Perdamaian Garis Finis Kita Bersama','5K','Satu Papua','10K','Perjumpaan','21K','Persahabatan','42K','Kampung Perdamaian','20·03·2027']" :key="w">
           <span class="flex items-center gap-10">
             <span class="display whitespace-nowrap text-lg sm:text-xl md:text-3xl" x-text="w"></span>
             <i class="fa-solid fa-shoe-prints text-sm text-wine"></i>
@@ -380,7 +385,7 @@
               </template>
             </ul>
             <div class="mt-7 flex items-center justify-between border-t border-bark/10 pt-5">
-              <span class="text-[10px] uppercase tracking-widest text-bark/50">Flag off</span>
+              <span class="text-[10px] uppercase tracking-widest text-bark/50">Pelepasan</span>
               <span class="display text-lg text-emerald2" x-text="c.start"></span>
             </div>
           </div>
@@ -391,7 +396,7 @@
     <div data-reveal class="mt-10 text-center">
       <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
          class="inline-flex items-center gap-3 rounded-full bg-wine px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream shadow-lg shadow-wine/25 transition hover:bg-emerald2">
-        Register Now <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        Daftar Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
       </a>
       <p class="mt-3 text-xs text-bark/60">Pendaftaran dikelola melalui mitra penyelenggara resmi.</p>
     </div>
@@ -455,14 +460,14 @@
       </p>
 
       <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-wrap gap-3">
-        <template x-for="v in ['Stan UMKM','PeaceGen','Live Music','Photo Corner','Komunitas Lari','Kuliner Papua']" :key="v">
+        <template x-for="v in ['Stan UMKM','PeaceGen','Musik Langsung','Sudut Foto','Komunitas Lari','Kuliner Papua']" :key="v">
           <span class="rounded-full border border-emerald2/30 bg-emerald2/10 px-5 py-2 text-xs uppercase tracking-widest text-emerald2" x-text="v"></span>
         </template>
       </div>
     </div>
 
     <div data-reveal data-reveal-delay="2" class="relative overflow-hidden rounded-3xl border border-bark/10 bg-white/80 p-7 shadow-sm backdrop-blur-sm md:p-10">
-      <h3 class="display text-xl tracking-widest text-wine">Rundown Hari-H</h3>
+      <h3 class="display text-xl tracking-widest text-wine">Susunan Acara Hari-H</h3>
       <ol class="mt-8 space-y-7 border-l border-bark/15 pl-7">
         <template x-for="(r,i) in rundown" :key="i">
           <li class="relative">
@@ -610,7 +615,7 @@
   <div class="relative z-10 mx-auto max-w-4xl px-5 text-center">
     <img data-reveal src="./img/logo.png" alt="" class="mx-auto h-24 drop-shadow-[0_18px_40px_rgba(0,0,0,.5)] md:h-32">
     <h2 data-reveal data-reveal-delay="1" class="display mt-8 text-[clamp(2rem,8vw,5.5rem)] text-cream">
-      Lintasi Garis Itu<br><span class="gold-text">Bersama Kami</span>
+      Perdamaian<br><span class="gold-text">Garis Finis Kita Bersama</span>
     </h2>
     <p data-reveal data-reveal-delay="2" class="mt-6 text-cream/80">
       5K · 10K · 21K · 42K — Jayapura &amp; Muara Tami, Papua · Sabtu, 20 Maret 2027
@@ -619,14 +624,14 @@
     <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
          class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-gold px-10 py-5 text-sm font-bold uppercase tracking-widest text-forest shadow-xl shadow-gold/25 transition hover:bg-cream sm:w-auto">
-        Register Now <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        Daftar Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
       </a>
       <a href="#faq" class="inline-flex w-full items-center justify-center gap-3 rounded-full border border-cream/30 px-10 py-5 text-sm font-bold uppercase tracking-widest text-cream transition hover:bg-cream hover:text-forest sm:w-auto">
         <i class="fa-regular fa-circle-question"></i> Pertanyaan Umum
       </a>
     </div>
     <p data-reveal data-reveal-delay="4" class="mt-5 text-xs text-cream/55">
-      Pendaftaran dibuka di platform mitra · Slot early bird terbatas · Kuota 1.000 pelari
+      Pendaftaran dibuka di laman mitra penyelenggara · Kuota pendaftaran awal terbatas · 1.000 pelari
     </p>
   </div>
 </section>
@@ -636,7 +641,8 @@
   <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 text-center md:grid-cols-12 md:gap-12 md:py-16 md:text-left">
     <div class="md:col-span-5">
       <img src="./img/logo.png" alt="Papua Peace Run 2027" class="mx-auto h-20 md:mx-0">
-      <p class="mx-auto mt-6 max-w-sm text-sm leading-relaxed text-cream/65 md:mx-0">
+      <p class="display mt-5 text-lg tracking-[0.1em] text-gold">Perdamaian Garis Finis Kita Bersama</p>
+      <p class="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-cream/65 md:mx-0">
         Gerakan lari lintas komunitas yang mengajak Papua dan Indonesia untuk mengalami, membangun,
         dan merayakan perdamaian bersama.
       </p>
@@ -656,7 +662,7 @@
           <li><a :href="l.href" x-text="l.label" class="link-underline transition hover:text-gold"></a></li>
         </template>
         <li>
-          <a :href="registerUrl" target="_blank" rel="noopener noreferrer" class="link-underline text-gold">Register Now</a>
+          <a :href="registerUrl" target="_blank" rel="noopener noreferrer" class="link-underline text-gold">Daftar Sekarang</a>
         </li>
       </ul>
     </div>
@@ -664,7 +670,7 @@
     <div class="md:col-span-4">
       <h4 class="display text-sm tracking-ultra text-gold">Kontak Panitia</h4>
       <ul class="mt-5 space-y-4 text-sm text-cream/70">
-        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-location-dot mt-1 text-gold"></i><span>Jayapura &amp; Muara Tami, Papua<br>Finish: Vtekya Restaurant</span></li>
+        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-location-dot mt-1 text-gold"></i><span>Jayapura &amp; Muara Tami, Papua<br>Garis finis: Vtekya Restaurant</span></li>
         <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-envelope mt-1 text-gold"></i><a href="mailto:hello@papuapeacerun.com" class="link-underline hover:text-gold">hello@papuapeacerun.com</a></li>
         <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-phone mt-1 text-gold"></i><a href="#" class="link-underline hover:text-gold">+62 8xx-xxxx-xxxx</a></li>
       </ul>
@@ -703,7 +709,7 @@
     </div>
     <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
        class="ml-1 hidden rounded-full bg-gold px-3 py-2 text-[9px] font-bold uppercase tracking-widest text-forest transition hover:bg-cream md:inline-block">
-      Register
+      Daftar
     </a>
     <button @click="floatTimer = false" aria-label="Tutup hitung mundur"
             class="grid h-6 w-6 shrink-0 place-items-center rounded-full text-cream/50 transition hover:bg-cream/10 hover:text-cream">
@@ -731,7 +737,7 @@
       <span class="grid h-14 w-14 place-items-center rounded-full bg-gold text-forest shadow-lg shadow-gold/30 ring-4 ring-forest">
         <i class="fa-solid fa-ticket text-lg"></i>
       </span>
-      Register
+      Daftar
     </a>
     <a href="#lokasi" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
       <i class="fa-solid fa-location-dot text-base"></i> Lokasi
@@ -779,16 +785,16 @@ function site() {
     ],
 
     stages: [
-      { no: '01', title: 'Jantung Jayapura', desc: 'Start saat fajar dari pusat kota — aspal datar, sorak warga, dan langkah pertama ribuan pelari yang bergerak sebagai satu barisan.', tags: ['Start', 'Kota', 'Sunrise'] },
-      { no: '02', title: 'Teluk Youtefa', desc: 'Menyusuri lengkung jembatan dan garis pantai teluk; angin laut, bukit hijau, dan panorama ikonik Papua di setiap kilometer.', tags: ['Teluk', 'Jembatan', 'Coastal'] },
-      { no: '03', title: 'Muara Tami', desc: 'Lanskap terbuka, kampung-kampung yang menyambut, lalu kembali untuk merayakan garis finis bersama di Kampung Perdamaian.', tags: ['Kampung', 'Finish', 'Perayaan'] },
+      { no: '01', title: 'Jantung Jayapura', desc: 'Berangkat saat fajar dari pusat kota — aspal datar, sorak warga, dan langkah pertama ribuan pelari yang bergerak sebagai satu barisan.', tags: ['Garis Start', 'Kota', 'Fajar'] },
+      { no: '02', title: 'Teluk Youtefa', desc: 'Menyusuri lengkung jembatan dan garis pantai teluk; angin laut, bukit hijau, dan panorama ikonik Papua di setiap kilometer.', tags: ['Teluk', 'Jembatan', 'Pesisir'] },
+      { no: '03', title: 'Muara Tami', desc: 'Lanskap terbuka, kampung-kampung yang menyambut, lalu kembali untuk merayakan garis finis bersama di Kampung Perdamaian.', tags: ['Kampung', 'Garis Finis', 'Perayaan'] },
     ],
 
     categories: [
-      { km: '5K',  tag: 'Fun & Family',  desc: 'Langkah pertama untuk keluarga, pelajar, dan komunitas yang baru memulai.', points: ['Ramah pemula', 'Rute dalam kota', 'Medali finisher'], start: '06.30' },
-      { km: '10K', tag: 'Community',     desc: 'Jarak favorit komunitas lari dan kantor untuk berlari berdampingan.', points: ['Water station tiap 2,5K', 'Pace group', 'Medali finisher'], start: '06.00' },
-      { km: '21K', tag: 'Half Marathon', desc: 'Setengah maraton menyusuri teluk — tantangan serius dengan pemandangan terbaik.', points: ['Timing chip', 'Cut-off 3,5 jam', 'Jersey & medali'], start: '05.30' },
-      { km: '42K', tag: 'Full Marathon', desc: 'Maraton penuh: keluar dari zona nyaman fisik dan sosial, hingga Muara Tami.', points: ['Timing chip', 'Cut-off 6,5 jam', 'Finisher kit lengkap'], start: '05.00' },
+      { km: '5K',  tag: 'Lari Keluarga',    desc: 'Langkah pertama untuk keluarga, pelajar, dan komunitas yang baru memulai.', points: ['Ramah pemula', 'Rute dalam kota', 'Medali penamat'], start: '06.30' },
+      { km: '10K', tag: 'Lari Komunitas',   desc: 'Jarak favorit komunitas lari dan kantor untuk berlari berdampingan.', points: ['Pos air tiap 2,5 km', 'Pendamping laju lari', 'Medali penamat'], start: '06.00' },
+      { km: '21K', tag: 'Setengah Maraton', desc: 'Setengah maraton menyusuri teluk — tantangan serius dengan pemandangan terbaik.', points: ['Cip pencatat waktu', 'Batas waktu 3,5 jam', 'Kaus lomba & medali'], start: '05.30' },
+      { km: '42K', tag: 'Maraton Penuh',    desc: 'Maraton penuh: keluar dari zona nyaman fisik dan sosial, hingga Muara Tami.', points: ['Cip pencatat waktu', 'Batas waktu 6,5 jam', 'Paket penamat lengkap'], start: '05.00' },
     ],
 
     stats: [
@@ -805,34 +811,34 @@ function site() {
     ],
 
     rundown: [
-      { time: '04.30 WIT', title: 'Race Village dibuka',   desc: 'Baggage drop, pemanasan bersama, dan doa lintas iman.' },
-      { time: '05.00 WIT', title: 'Flag off 42K',          desc: 'Maraton penuh memulai perjalanan menuju Muara Tami.' },
-      { time: '05.30–06.30', title: 'Flag off 21K · 10K · 5K', desc: 'Gelombang start berurutan dari pusat kota Jayapura.' },
+      { time: '04.30 WIT', title: 'Area lomba dibuka',     desc: 'Penitipan barang, pemanasan bersama, dan doa lintas iman.' },
+      { time: '05.00 WIT', title: 'Pelepasan 42K',         desc: 'Maraton penuh memulai perjalanan menuju Muara Tami.' },
+      { time: '05.30–06.30', title: 'Pelepasan 21K · 10K · 5K', desc: 'Gelombang keberangkatan berurutan dari pusat kota Jayapura.' },
       { time: '09.00 WIT', title: 'Kampung Perdamaian',    desc: 'Stan UMKM, musik, PeaceGen, dan ruang perjumpaan di Vtekya Restaurant.' },
       { time: '12.00 WIT', title: 'Seremoni & Penutupan',  desc: 'Penyerahan penghargaan dan perayaan bersama satu Papua.' },
     ],
 
     titik: [
-      { label: 'Start',    name: 'Pusat Kota Jayapura',    desc: 'Jl. Raya Abepura, Kota Jayapura, Papua' },
-      { label: 'Lintasan', name: 'Teluk & Jembatan Youtefa', desc: 'Menyusuri garis pantai teluk menuju Muara Tami' },
-      { label: 'Finish',   name: 'Vtekya Restaurant',      desc: 'Kampung Perdamaian · Race Village' },
+      { label: 'Garis Start', name: 'Pusat Kota Jayapura',     desc: 'Jl. Raya Abepura, Kota Jayapura, Papua' },
+      { label: 'Lintasan',    name: 'Teluk & Jembatan Youtefa', desc: 'Menyusuri garis pantai teluk menuju Muara Tami' },
+      { label: 'Garis Finis', name: 'Vtekya Restaurant',       desc: 'Kampung Perdamaian · Area lomba' },
     ],
 
     tiers: [
-      { name: 'Sahabat', slot: 'Community Partner', featured: false,
-        benefits: ['Logo di website & materi digital', 'Penyebutan di media sosial', 'Stan komunitas di Kampung Perdamaian', '5 slot pendaftaran'] },
-      { name: 'Mitra', slot: 'Official Partner', featured: true,
-        benefits: ['Logo di backdrop, gate, dan jersey', 'Stan premium di Kampung Perdamaian', 'Penyebutan MC di panggung utama', 'Konten kolaborasi media sosial', '25 slot pendaftaran'] },
-      { name: 'Utama', slot: 'Title Sponsor', featured: false,
-        benefits: ['Penamaan dalam judul acara', 'Penempatan logo prioritas di semua kanal', 'Sesi seremoni & konferensi pers', 'Aktivasi brand kustom', '60 slot pendaftaran'] },
+      { name: 'Sahabat', slot: 'Mitra Komunitas', featured: false,
+        benefits: ['Logo di situs & materi digital', 'Penyebutan di media sosial', 'Stan komunitas di Kampung Perdamaian', '5 kuota pendaftaran'] },
+      { name: 'Mitra', slot: 'Mitra Resmi', featured: true,
+        benefits: ['Logo di latar panggung, gerbang, dan kaus lomba', 'Stan utama di Kampung Perdamaian', 'Penyebutan pembawa acara di panggung utama', 'Konten kolaborasi media sosial', '25 kuota pendaftaran'] },
+      { name: 'Utama', slot: 'Sponsor Utama', featured: false,
+        benefits: ['Penamaan dalam judul acara', 'Penempatan logo prioritas di semua kanal', 'Sesi seremoni & konferensi pers', 'Aktivasi merek khusus', '60 kuota pendaftaran'] },
     ],
 
     penyelenggara: ['Peace Generation', 'Peacemaker Papua', 'Beyond Education Centre'],
 
     faqs: [
       { q: 'Kapan dan di mana acara berlangsung?', a: 'Sabtu, 20 Maret 2027 di Jayapura dan Muara Tami, Papua. Garis finis dan acara penutup berlangsung di Vtekya Restaurant — Kampung Perdamaian.' },
-      { q: 'Bagaimana cara mendaftar?', a: 'Pendaftaran dilakukan melalui platform mitra penyelenggara. Klik tombol Register Now di halaman ini untuk membuka halaman pendaftaran resmi.' },
-      { q: 'Kategori apa saja yang tersedia?', a: 'Tersedia empat kategori: 5K, 10K, 21K (half marathon), dan 42K (full marathon), terbuka untuk pelari dari berbagai tingkat kemampuan.' },
+      { q: 'Bagaimana cara mendaftar?', a: 'Pendaftaran dilakukan melalui laman mitra penyelenggara. Klik tombol Daftar Sekarang di halaman ini untuk membuka laman pendaftaran resmi.' },
+      { q: 'Kategori apa saja yang tersedia?', a: 'Tersedia empat kategori: 5K, 10K, 21K (setengah maraton), dan 42K (maraton penuh), terbuka untuk pelari dari berbagai tingkat kemampuan.' },
       { q: 'Siapa saja yang boleh ikut?', a: 'Terbuka untuk umum dari seluruh Indonesia. Kategori 21K dan 42K memiliki batas usia minimum dan ketentuan kesehatan yang diumumkan bersama pembukaan pendaftaran.' },
       { q: 'Bagaimana cara menjadi mitra atau sponsor?', a: 'Perusahaan, lembaga, usaha lokal, maupun individu dapat bergabung melalui paket Sahabat, Mitra, atau Utama. Hubungi panitia melalui email untuk menerima proposal lengkap.' },
       { q: 'Apakah tersedia kesempatan menjadi relawan?', a: 'Ya. Kami mengundang relawan dari beragam suku, agama, dan komunitas untuk melayani bersama — pendaftaran relawan dibuka bersamaan dengan pendaftaran peserta.' },
