@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pendaftaran — Papua Peace Run 2027</title>
+<meta name="description" content="Halaman pendaftaran Papua Peace Run 2027: pilih kategori 5K, 10K, 21K, atau 42K. Sabtu, 20 Maret 2027 di Jayapura & Muara Tami, Papua." />
+<link rel="icon" href="./img/logo.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="./assets/theme.js"></script>
+<link rel="stylesheet" href="./assets/theme.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans" x-data="registrasi()" x-init="init()">
+
+<!-- ================= HEADER ================= -->
+<header class="sticky top-0 z-50 border-b border-white/10 bg-ink/95 backdrop-blur-xl">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="./img/logo.png" alt="Papua Peace Run 2027" class="h-11">
+      <span class="hidden sm:block leading-tight">
+        <span class="block display text-sm tracking-widest text-cream">Papua Peace Run</span>
+        <span class="block text-[10px] tracking-ultra text-gold/80">2027 · JAYAPURA</span>
+      </span>
+    </a>
+    <ul class="hidden lg:flex items-center gap-8 text-[12px] font-bold uppercase tracking-[0.18em] text-cream/80">
+      <li><a href="index.html#tentang" class="link-underline hover:text-cream transition">Tentang</a></li>
+      <li><a href="index.html#rute" class="link-underline hover:text-cream transition">Rute</a></li>
+      <li><a href="index.html#kategori" class="link-underline hover:text-cream transition">Kategori</a></li>
+      <li><a href="index.html#mitra" class="link-underline hover:text-cream transition">Mitra</a></li>
+      <li><a href="daftar.html" class="text-gold">Pendaftaran</a></li>
+    </ul>
+    <div class="flex items-center gap-2">
+      <a href="login.html" class="rounded-full border border-cream/25 px-5 py-2.5 text-[11px] font-bold uppercase tracking-widest text-cream hover:bg-cream hover:text-ink transition">
+        <i class="fa-solid fa-right-to-bracket mr-1"></i> Masuk
+      </a>
+      <a href="dashboard.html" class="hidden sm:inline-flex rounded-full btn-primary px-5 py-2.5 text-[11px] font-bold uppercase tracking-widest">
+        Dashboard
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= BREADCRUMB ================= -->
+<div class="border-b border-slate1/10 bg-white">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 text-xs text-slate2">
+    <nav class="flex items-center gap-2">
+      <a href="index.html" class="hover:text-maroon transition">Beranda</a>
+      <i class="fa-solid fa-chevron-right text-[8px] opacity-40"></i>
+      <a href="index.html#kategori" class="hover:text-maroon transition">Acara</a>
+      <i class="fa-solid fa-chevron-right text-[8px] opacity-40"></i>
+      <span class="font-semibold text-slate1">Detail Acara</span>
+    </nav>
+    <a href="index.html" class="hidden sm:inline-flex items-center gap-2 hover:text-maroon transition">
+      <i class="fa-solid fa-arrow-left-long"></i> Kembali ke beranda
+    </a>
+  </div>
+</div>
+
+<!-- ================= DETAIL ACARA ================= -->
+<main class="bg-paper">
+  <section class="mx-auto max-w-7xl px-5 py-10">
+    <div class="grid lg:grid-cols-12 gap-8">
+
+      <!-- ====== KOLOM KIRI: POSTER + INFO ====== -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- poster -->
+        <div data-reveal class="card overflow-hidden">
+          <div class="relative aspect-[4/5] overflow-hidden grain bg-[radial-gradient(120%_90%_at_50%_0%,#3A1512_0%,#15100E_55%,#0B0807_100%)]">
+            <div class="absolute inset-0 motif opacity-[.16]"></div>
+            <svg class="absolute bottom-0 left-0 w-full text-maroon/40" viewBox="0 0 400 120" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+              <path d="M0 80 L60 40 L120 76 L190 30 L260 82 L330 44 L400 86 L400 120 L0 120 Z"/>
+            </svg>
+
+            <div class="absolute left-4 top-4 flex items-center gap-2">
+              <span class="rounded-full bg-gold px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-ink">E-Ticket</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cream backdrop-blur">Running</span>
+            </div>
+
+            <div class="relative flex h-full flex-col items-center justify-center px-8 text-center">
+              <img src="./img/logo.png" alt="Poster Papua Peace Run 2027" class="w-[78%] drop-shadow-[0_20px_45px_rgba(0,0,0,.6)]">
+              <p class="display mt-6 text-lg tracking-widest text-cream">Sabtu, 20 Maret 2027</p>
+              <p class="mt-2 text-[11px] uppercase tracking-ultra text-gold">Jayapura · Muara Tami</p>
+              <div class="mt-5 flex flex-wrap justify-center gap-2">
+                <template x-for="k in ['5K','10K','21K','42K']" :key="k">
+                  <span class="rounded-full border border-gold/40 px-3 py-1 text-[11px] font-bold text-gold" x-text="k"></span>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- info ringkas: tanggal, jam, lokasi -->
+        <div data-reveal class="grid sm:grid-cols-3 gap-4">
+          <div class="card p-4">
+            <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate2">
+              <i class="fa-regular fa-calendar text-maroon"></i> Tanggal
+            </div>
+            <p class="mt-2 text-sm font-semibold text-slate1">Sabtu, 20 Mar 2027</p>
+          </div>
+          <div class="card p-4">
+            <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate2">
+              <i class="fa-regular fa-clock text-maroon"></i> Jam
+            </div>
+            <p class="mt-2 text-sm font-semibold text-slate1">05.00 – 12.00 WIT</p>
+          </div>
+          <div class="card p-4">
+            <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate2">
+              <i class="fa-solid fa-location-dot text-maroon"></i> Lokasi
+            </div>
+            <p class="mt-2 text-sm font-semibold text-slate1">Jayapura, Papua</p>
+          </div>
+        </div>
+
+        <!-- countdown -->
+        <div data-reveal class="card overflow-hidden">
+          <div class="bg-[linear-gradient(120deg,#6E1515,#2B1210)] px-6 py-5">
+            <p class="text-center text-[10px] uppercase tracking-ultra text-sand/70">Menuju garis start</p>
+            <div class="mt-3 grid grid-cols-4 gap-2 text-center">
+              <template x-for="u in [['days','Hari'],['hours','Jam'],['mins','Menit'],['secs','Detik']]" :key="u[0]">
+                <div class="rounded-xl bg-white/10 py-2">
+                  <div class="display text-xl text-cream" x-text="String(countdown[u[0]]).padStart(2,'0')"></div>
+                  <div class="text-[9px] uppercase tracking-widest text-sand/60" x-text="u[1]"></div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== KOLOM KANAN: JUDUL + TIKET ====== -->
+      <div class="lg:col-span-7 space-y-6">
+        <div data-reveal class="card p-7">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-maroon/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-maroon">Running</span>
+            <span class="rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-600">Pendaftaran Dibuka</span>
+          </div>
+
+          <h1 class="display mt-4 text-[clamp(1.9rem,4vw,3rem)] text-slate1">Papua Peace Run 2027</h1>
+          <p class="mt-2 text-sm italic text-slate2">Berlari berdampingan, merayakan perdamaian.</p>
+
+          <ul class="mt-6 space-y-3 text-sm text-slate2">
+            <li class="flex items-center gap-3"><i class="fa-regular fa-calendar w-4 text-maroon"></i> Sabtu, 20 Maret 2027</li>
+            <li class="flex items-center gap-3"><i class="fa-regular fa-clock w-4 text-maroon"></i> Flag off 05.00 WIT · Kampung Perdamaian hingga 12.00 WIT</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-location-dot w-4 text-maroon"></i> Jayapura &amp; Muara Tami, Papua, Indonesia</li>
+            <li class="flex items-center gap-3"><i class="fa-regular fa-user w-4 text-maroon"></i> Oleh <span class="font-semibold text-maroon">Panitia Papua Peace Run</span></li>
+          </ul>
+
+          <p class="mt-6 border-t border-slate1/10 pt-5 text-sm leading-relaxed text-slate2">
+            Papua Peace Run 2027 adalah gerakan lari lintas komunitas yang mengajak Papua dan Indonesia untuk mengalami,
+            membangun, dan merayakan perdamaian bersama — menyusuri Jayapura, Teluk Youtefa, hingga Muara Tami.
+          </p>
+        </div>
+
+        <!-- stepper -->
+        <div data-reveal class="card p-5">
+          <ol class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+            <template x-for="(s,i) in steps" :key="i">
+              <li class="rounded-xl border px-3 py-3"
+                  :class="i === 0 ? 'border-maroon bg-maroon/5' : 'border-slate1/10'">
+                <span class="display text-xs tracking-widest"
+                      :class="i === 0 ? 'text-maroon' : 'text-slate2/60'" x-text="'0'+(i+1)"></span>
+                <p class="mt-1 text-[11px] font-semibold uppercase tracking-wide"
+                   :class="i === 0 ? 'text-slate1' : 'text-slate2/70'" x-text="s"></p>
+              </li>
+            </template>
+          </ol>
+        </div>
+
+        <!-- pilih tiket -->
+        <div data-reveal class="card p-7">
+          <div class="flex items-center justify-between">
+            <h2 class="display text-xl text-slate1">Pilih Tiket</h2>
+            <span class="flex items-center gap-2 text-[11px] font-semibold text-emerald-600">
+              <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Kuota real-time
+            </span>
+          </div>
+
+          <div class="mt-5 flex gap-3 rounded-xl border border-gold/40 bg-gold/10 p-4 text-xs leading-relaxed text-slate1">
+            <i class="fa-solid fa-circle-info mt-0.5 text-gold"></i>
+            <p><span class="font-bold">Ketentuan:</span> maksimal 1 tiket per orang per kategori. Setiap tiket memerlukan data pribadi pelari (KTP/NIK, ukuran jersey, kontak darurat) yang diisi setelah pembayaran.</p>
+          </div>
+
+          <div class="mt-6 space-y-3">
+            <template x-for="(t,i) in tickets" :key="t.id">
+              <div class="rounded-2xl border p-5 transition"
+                   :class="t.soldOut ? 'border-rose-200 bg-rose-50/60' : (t.qty > 0 ? 'border-maroon bg-maroon/[.03]' : 'border-slate1/10 hover:border-gold/60')">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="text-sm font-bold uppercase tracking-wide text-slate1" x-text="t.name"></p>
+                    <p class="mt-1 text-xs text-slate2" x-text="t.desc"></p>
+                    <p x-show="t.soldOut" class="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-rose-600">
+                      <i class="fa-solid fa-circle-xmark"></i> Sold Out
+                    </p>
+                    <p x-show="!t.soldOut" class="mt-2 text-[11px] text-slate2">
+                      Sisa kuota: <span class="font-bold text-slate1" x-text="t.stock"></span>
+                    </p>
+                  </div>
+                  <p class="shrink-0 text-right text-sm font-extrabold"
+                     :class="t.soldOut ? 'text-rose-400 line-through' : 'text-maroon'" x-text="rupiah(t.price)"></p>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between border-t border-slate1/10 pt-4">
+                  <span class="text-[11px] uppercase tracking-widest text-slate2">Jumlah</span>
+                  <div class="flex items-center gap-2">
+                    <button @click="dec(i)" :disabled="t.soldOut || t.qty === 0"
+                            class="grid h-9 w-9 place-items-center rounded-lg border border-slate1/15 text-slate1 transition hover:bg-slate1 hover:text-cream disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-slate1">
+                      <i class="fa-solid fa-minus text-xs"></i>
+                    </button>
+                    <input type="text" readonly :value="t.qty"
+                           class="h-9 w-14 rounded-lg border border-slate1/15 text-center text-sm font-bold text-slate1">
+                    <button @click="inc(i)" :disabled="t.soldOut || t.qty >= 1"
+                            class="grid h-9 w-9 place-items-center rounded-lg border border-slate1/15 text-slate1 transition hover:bg-slate1 hover:text-cream disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-slate1">
+                      <i class="fa-solid fa-plus text-xs"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <!-- ringkasan -->
+          <div class="mt-6 rounded-2xl bg-paper p-5">
+            <div class="space-y-2 text-sm">
+              <template x-for="t in tickets.filter(t => t.qty > 0)" :key="t.id">
+                <div class="flex items-center justify-between text-slate2">
+                  <span x-text="t.name + ' × ' + t.qty"></span>
+                  <span class="font-semibold text-slate1" x-text="rupiah(t.price * t.qty)"></span>
+                </div>
+              </template>
+              <p x-show="total === 0" class="text-xs text-slate2">Belum ada tiket dipilih.</p>
+              <div x-show="total > 0" class="flex items-center justify-between text-slate2">
+                <span>Biaya layanan</span>
+                <span class="font-semibold text-slate1" x-text="rupiah(fee)"></span>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between border-t border-slate1/10 pt-4">
+              <span class="display text-sm tracking-widest text-slate1">Total Harga</span>
+              <span class="display text-2xl text-maroon" x-text="rupiah(total + (total > 0 ? fee : 0))"></span>
+            </div>
+          </div>
+
+          <a :href="total > 0 ? 'login.html' : '#'" @click="total === 0 && $event.preventDefault()"
+             class="mt-5 flex w-full items-center justify-center gap-3 rounded-full px-6 py-4 text-xs font-bold uppercase tracking-widest transition"
+             :class="total > 0 ? 'btn-primary' : 'cursor-not-allowed bg-slate1/10 text-slate2'">
+            <i class="fa-solid fa-ticket"></i> Pesan Sekarang
+          </a>
+          <p class="mt-3 text-center text-[11px] text-slate2">Dengan memesan, kamu menyetujui syarat &amp; ketentuan serta aturan lomba.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TENTANG KEGIATAN ================= -->
+  <section class="border-t border-slate1/10 bg-white">
+    <div class="mx-auto max-w-7xl px-5 py-14 grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-7">
+        <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">Tentang Kegiatan</p>
+        <h2 data-reveal class="display mt-4 text-3xl text-slate1">Dari pulau perang<br><span class="text-maroon">menjadi pulau damai</span></h2>
+        <div data-reveal class="mt-6 space-y-4 text-sm leading-relaxed text-slate2">
+          <p>Papua Peace Run 2027 bukan sekadar lomba dengan tema perdamaian. Perlombaan itu sendiri menjadi wadah di mana orang dari berbagai komunitas bekerja bersama, melayani bersama, membangun hubungan, dan mengalami persatuan.</p>
+          <p>Rute membentang dari jantung Kota Jayapura, menyusuri Teluk Youtefa dengan lengkung Jembatan Youtefa, hingga lanskap terbuka Muara Tami — mengundang peserta dari seluruh Indonesia bertemu masyarakat lokal dan melihat Papua melampaui stereotip.</p>
+          <p>Setelah garis finis, perjumpaan berlanjut di <span class="font-semibold text-slate1">Kampung Perdamaian, Vtekya Restaurant</span>: stan mitra dan UMKM lokal, komunitas lari, kegiatan PeaceGen, area foto, musik, serta ruang bagi peserta dan penonton untuk saling mengenal.</p>
+        </div>
+
+        <div data-reveal class="mt-8 grid sm:grid-cols-3 gap-4">
+          <template x-for="f in fasilitas" :key="f.label">
+            <div class="rounded-2xl border border-slate1/10 p-4">
+              <i class="fa-solid text-maroon" :class="f.icon"></i>
+              <p class="mt-2 text-xs font-semibold text-slate1" x-text="f.label"></p>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- ringkasan acara -->
+      <aside class="lg:col-span-5">
+        <div data-reveal class="card p-6">
+          <h3 class="display text-lg text-slate1">Informasi Acara</h3>
+          <dl class="mt-5 divide-y divide-slate1/10 text-sm">
+            <template x-for="r in ringkasan" :key="r.k">
+              <div class="flex items-start justify-between gap-6 py-3">
+                <dt class="text-slate2" x-text="r.k"></dt>
+                <dd class="text-right font-semibold text-slate1" x-text="r.v"></dd>
+              </div>
+            </template>
+          </dl>
+          <a href="index.html#mitra" class="mt-5 flex items-center justify-center gap-2 rounded-full btn-ghost px-5 py-3 text-[11px] font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-handshake-angle"></i> Informasi Kemitraan
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================= PETA LOKASI ================= -->
+  <section class="border-t border-slate1/10 bg-paper">
+    <div class="mx-auto max-w-7xl px-5 py-14">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">Peta Lokasi</p>
+          <h2 data-reveal class="display mt-3 text-3xl text-slate1">Jayapura &amp; Muara Tami</h2>
+        </div>
+        <a data-reveal href="https://www.google.com/maps/search/?api=1&query=Jayapura,+Papua,+Indonesia" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 rounded-full btn-ghost px-5 py-3 text-[11px] font-bold uppercase tracking-widest">
+          <i class="fa-solid fa-diamond-turn-right"></i> Buka di Google Maps
+        </a>
+      </div>
+
+      <div data-reveal class="card mt-7 overflow-hidden">
+        <div class="grid md:grid-cols-12">
+          <div class="md:col-span-4 p-6 space-y-5">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-widest text-slate2">Start</p>
+              <p class="mt-1 text-sm font-semibold text-slate1">Pusat Kota Jayapura</p>
+              <p class="text-xs text-slate2">Jl. Raya Abepura, Kota Jayapura, Papua</p>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-widest text-slate2">Lintasan</p>
+              <p class="mt-1 text-sm font-semibold text-slate1">Teluk &amp; Jembatan Youtefa</p>
+              <p class="text-xs text-slate2">Menyusuri garis pantai teluk menuju Muara Tami</p>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-widest text-slate2">Finish</p>
+              <p class="mt-1 text-sm font-semibold text-slate1">Vtekya Restaurant</p>
+              <p class="text-xs text-slate2">Kampung Perdamaian · Race Village</p>
+            </div>
+            <div class="rounded-xl bg-paper p-4 text-xs text-slate2">
+              <i class="fa-solid fa-circle-info text-gold"></i>
+              Peta rute resmi dan titik water station akan dirilis H-30 sebelum acara.
+            </div>
+          </div>
+          <div class="md:col-span-8 min-h-[340px]">
+            <iframe
+              title="Peta lokasi Papua Peace Run 2027"
+              src="https://www.google.com/maps?q=Jayapura,%20Papua,%20Indonesia&z=12&output=embed"
+              class="h-full min-h-[340px] w-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACARA TERKAIT ================= -->
+  <section class="border-t border-slate1/10 bg-white">
+    <div class="mx-auto max-w-7xl px-5 py-14">
+      <div class="flex items-end justify-between">
+        <h2 data-reveal class="display text-2xl text-slate1">Acara Terkait</h2>
+        <a data-reveal href="#" class="text-[11px] font-bold uppercase tracking-widest text-maroon link-underline">Lihat semua</a>
+      </div>
+
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <template x-for="a in terkait" :key="a.title">
+          <a href="#" class="group card overflow-hidden transition hover:-translate-y-1.5 hover:shadow-xl">
+            <div class="relative aspect-[16/10] overflow-hidden" :class="a.bg">
+              <div class="absolute inset-0 motif opacity-20"></div>
+              <div class="relative flex h-full items-center justify-center px-4 text-center">
+                <span class="display text-lg text-cream" x-text="a.title"></span>
+              </div>
+            </div>
+            <div class="p-4">
+              <p class="text-sm font-bold text-slate1" x-text="a.title"></p>
+              <p class="mt-1 text-xs text-slate2" x-text="a.meta"></p>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-ink text-cream">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <img src="./img/logo.png" alt="Papua Peace Run 2027" class="h-16">
+      <p class="mt-5 max-w-sm text-sm leading-relaxed text-sand/60">
+        Gerakan lari lintas komunitas yang mengajak Papua dan Indonesia untuk mengalami, membangun, dan merayakan perdamaian bersama.
+      </p>
+    </div>
+    <div class="md:col-span-3">
+      <h4 class="display text-sm tracking-ultra text-gold">Navigasi</h4>
+      <ul class="mt-5 space-y-3 text-[12px] font-semibold uppercase tracking-[0.18em] text-sand/65">
+        <li><a href="index.html" class="link-underline hover:text-cream transition">Beranda</a></li>
+        <li><a href="daftar.html" class="link-underline hover:text-cream transition">Pendaftaran</a></li>
+        <li><a href="login.html" class="link-underline hover:text-cream transition">Masuk</a></li>
+        <li><a href="dashboard.html" class="link-underline hover:text-cream transition">Dashboard</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-4">
+      <h4 class="display text-sm tracking-ultra text-gold">Kontak Panitia</h4>
+      <ul class="mt-5 space-y-4 text-sm text-sand/65">
+        <li class="flex gap-3"><i class="fa-solid fa-location-dot mt-1 text-gold"></i><span>Jayapura &amp; Muara Tami, Papua<br>Finish: Vtekya Restaurant</span></li>
+        <li class="flex gap-3"><i class="fa-solid fa-envelope mt-1 text-gold"></i><a href="mailto:hello@papuapeacerun.com" class="link-underline hover:text-cream">hello@papuapeacerun.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-5 py-6 text-[11px] uppercase tracking-widest text-sand/40">
+      © 2027 Papua Peace Run. Satu Papua, Satu Langkah.
+    </div>
+  </div>
+</footer>
+
+<script>
+function registrasi() {
+  return {
+    fee: 7500,
+    countdown: { days: 0, hours: 0, mins: 0, secs: 0 },
+    steps: ['Pilih Tiket', 'Masuk / Daftar', 'Data Pelari', 'Pembayaran'],
+
+    tickets: [
+      { id: 'eb5',  name: 'Early Bird 5K',  desc: 'Fun & Family Run — kuota terbatas',       price: 185000, stock: 0,   qty: 0, soldOut: true },
+      { id: 'eb10', name: 'Early Bird 10K', desc: 'Community Run — kuota terbatas',          price: 255000, stock: 0,   qty: 0, soldOut: true },
+      { id: 'r5',   name: '5K',             desc: 'Fun & Family Run · flag off 06.30 WIT',   price: 229000, stock: 184, qty: 0, soldOut: false },
+      { id: 'r10',  name: '10K',            desc: 'Community Run · flag off 06.00 WIT',      price: 319000, stock: 126, qty: 0, soldOut: false },
+      { id: 'r21',  name: '21K',            desc: 'Half Marathon · flag off 05.30 WIT',      price: 399000, stock: 78,  qty: 0, soldOut: false },
+      { id: 'r42',  name: '42K',            desc: 'Full Marathon · flag off 05.00 WIT',      price: 549000, stock: 41,  qty: 0, soldOut: false },
+    ],
+
+    fasilitas: [
+      { icon: 'fa-shirt',        label: 'Jersey & Race Pack' },
+      { icon: 'fa-medal',        label: 'Medali Finisher' },
+      { icon: 'fa-stopwatch',    label: 'Timing Chip (21K & 42K)' },
+      { icon: 'fa-bottle-water', label: 'Water Station' },
+      { icon: 'fa-kit-medical',  label: 'Tim Medis & Ambulans' },
+      { icon: 'fa-camera',       label: 'Dokumentasi Gratis' },
+    ],
+
+    ringkasan: [
+      { k: 'Tanggal',   v: 'Sabtu, 20 Maret 2027' },
+      { k: 'Flag off',  v: '05.00 WIT' },
+      { k: 'Lokasi',    v: 'Jayapura & Muara Tami' },
+      { k: 'Kategori',  v: '5K · 10K · 21K · 42K' },
+      { k: 'Kuota',     v: '1.000 pelari' },
+      { k: 'Finish',    v: 'Vtekya Restaurant' },
+    ],
+
+    terkait: [
+      { title: 'Peace Night Run', meta: '12 Des 2026 · Kota Jayapura', bg: 'bg-[linear-gradient(135deg,#6E1515,#2B1210)]' },
+      { title: 'Youtefa Trail 15K', meta: '18 Jan 2027 · Teluk Youtefa', bg: 'bg-[linear-gradient(135deg,#A12A22,#3A1512)]' },
+      { title: 'PeaceGen Fun Walk', meta: '07 Feb 2027 · Abepura', bg: 'bg-[linear-gradient(135deg,#C9972B,#6E1515)]' },
+      { title: 'Sentani Lake Run', meta: '14 Mar 2027 · Kab. Jayapura', bg: 'bg-[linear-gradient(135deg,#15100E,#6E1515)]' },
+    ],
+
+    get total() {
+      return this.tickets.reduce((s, t) => s + t.price * t.qty, 0);
+    },
+
+    rupiah(n) { return 'Rp ' + n.toLocaleString('id-ID'); },
+    inc(i) { const t = this.tickets[i]; if (!t.soldOut && t.qty < 1) t.qty++; },
+    dec(i) { const t = this.tickets[i]; if (t.qty > 0) t.qty--; },
+
+    init() {
+      this.tick(); setInterval(() => this.tick(), 1000);
+      const io = new IntersectionObserver((es) => {
+        es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    },
+
+    tick() {
+      const target = new Date('2027-03-20T05:00:00+09:00').getTime();
+      let diff = Math.max(0, target - Date.now());
+      const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+      const h = Math.floor(diff / 3600000);  diff -= h * 3600000;
+      const m = Math.floor(diff / 60000);    diff -= m * 60000;
+      this.countdown = { days: d, hours: h, mins: m, secs: Math.floor(diff / 1000) };
+    },
+  }
+}
+</script>
+</body>
+</html>
