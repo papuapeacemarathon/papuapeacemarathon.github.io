@@ -201,6 +201,10 @@
             Daftar Sekarang
             <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1.5"></i>
           </a>
+          <a :href="detailUrl" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center gap-3 rounded-full border border-cream/30 px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-forest sm:text-sm">
+            <i class="fa-solid fa-circle-info"></i> Detail Paket
+          </a>
           <a href="#mitra" class="inline-flex items-center justify-center gap-3 rounded-full border border-cream/30 px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-forest sm:text-sm">
             <i class="fa-solid fa-handshake-angle"></i> Jadi Mitra
           </a>
@@ -393,12 +397,18 @@
       </template>
     </div>
 
-    <div data-reveal class="mt-10 text-center">
-      <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-3 rounded-full bg-wine px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream shadow-lg shadow-wine/25 transition hover:bg-emerald2">
-        Daftar Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-      </a>
-      <p class="mt-3 text-xs text-bark/60">Pendaftaran dikelola melalui mitra penyelenggara resmi.</p>
+    <div data-reveal class="mt-10 flex flex-col items-center gap-3">
+      <div class="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+        <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-3 rounded-full bg-wine px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream shadow-lg shadow-wine/25 transition hover:bg-emerald2">
+          Daftar Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+        <a :href="detailUrl" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-3 rounded-full border border-bark/20 px-8 py-4 text-xs font-bold uppercase tracking-widest text-wine transition hover:bg-wine hover:text-cream">
+          <i class="fa-solid fa-circle-info"></i> Detail Paket
+        </a>
+      </div>
+      <p class="text-xs text-bark/60">Pendaftaran dan pembayaran dikelola melalui Lynk.id.</p>
     </div>
   </div>
 </section>
@@ -626,12 +636,13 @@
          class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-gold px-10 py-5 text-sm font-bold uppercase tracking-widest text-forest shadow-xl shadow-gold/25 transition hover:bg-cream sm:w-auto">
         Daftar Sekarang <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
       </a>
-      <a href="#faq" class="inline-flex w-full items-center justify-center gap-3 rounded-full border border-cream/30 px-10 py-5 text-sm font-bold uppercase tracking-widest text-cream transition hover:bg-cream hover:text-forest sm:w-auto">
-        <i class="fa-regular fa-circle-question"></i> Pertanyaan Umum
+      <a :href="detailUrl" target="_blank" rel="noopener noreferrer"
+         class="inline-flex w-full items-center justify-center gap-3 rounded-full border border-cream/30 px-10 py-5 text-sm font-bold uppercase tracking-widest text-cream transition hover:bg-cream hover:text-forest sm:w-auto">
+        <i class="fa-solid fa-circle-info"></i> Detail Paket
       </a>
     </div>
     <p data-reveal data-reveal-delay="4" class="mt-5 text-xs text-cream/55">
-      Pendaftaran dibuka di laman mitra penyelenggara · Kuota pendaftaran awal terbatas · 1.000 pelari
+      Pendaftaran &amp; pembayaran melalui Lynk.id · Kuota pendaftaran awal terbatas · 1.000 pelari
     </p>
   </div>
 </section>
@@ -661,6 +672,9 @@
         <template x-for="l in nav" :key="l.href">
           <li><a :href="l.href" x-text="l.label" class="link-underline transition hover:text-gold"></a></li>
         </template>
+        <li>
+          <a :href="detailUrl" target="_blank" rel="noopener noreferrer" class="link-underline transition hover:text-gold">Detail Paket</a>
+        </li>
         <li>
           <a :href="registerUrl" target="_blank" rel="noopener noreferrer" class="link-underline text-gold">Daftar Sekarang</a>
         </li>
@@ -751,8 +765,11 @@
 <script>
 function site() {
   return {
-    /* ====== GANTI DENGAN URL PENDAFTARAN PIHAK KETIGA ====== */
-    registerUrl: 'https://registrasi.papuapeacerun.com',
+    /* ====== Tautan pendaftaran eksternal (Lynk.id) ====== */
+    // Halaman detail produk/paket pendaftaran
+    detailUrl: 'https://lynk.id/papuapeacemarathon/xjllezk17wjr',
+    // Halaman checkout langsung
+    registerUrl: 'https://lynk.id/papuapeacemarathon/xjllezk17wjr/checkout',
 
     scrolled: false,
     floatTimer: true,
@@ -837,7 +854,7 @@ function site() {
 
     faqs: [
       { q: 'Kapan dan di mana acara berlangsung?', a: 'Sabtu, 20 Maret 2027 di Jayapura dan Muara Tami, Papua. Garis finis dan acara penutup berlangsung di Vtekya Restaurant — Kampung Perdamaian.' },
-      { q: 'Bagaimana cara mendaftar?', a: 'Pendaftaran dilakukan melalui laman mitra penyelenggara. Klik tombol Daftar Sekarang di halaman ini untuk membuka laman pendaftaran resmi.' },
+      { q: 'Bagaimana cara mendaftar?', a: 'Pendaftaran dan pembayaran dilakukan melalui Lynk.id. Klik tombol Daftar Sekarang untuk langsung menuju halaman pembayaran, atau Detail Paket untuk membaca rincian paket terlebih dahulu.' },
       { q: 'Kategori apa saja yang tersedia?', a: 'Tersedia empat kategori: 5K, 10K, 21K (setengah maraton), dan 42K (maraton penuh), terbuka untuk pelari dari berbagai tingkat kemampuan.' },
       { q: 'Siapa saja yang boleh ikut?', a: 'Terbuka untuk umum dari seluruh Indonesia. Kategori 21K dan 42K memiliki batas usia minimum dan ketentuan kesehatan yang diumumkan bersama pembukaan pendaftaran.' },
       { q: 'Bagaimana cara menjadi mitra atau sponsor?', a: 'Perusahaan, lembaga, usaha lokal, maupun individu dapat bergabung melalui paket Sahabat, Mitra, atau Utama. Hubungi panitia melalui email untuk menerima proposal lengkap.' },
