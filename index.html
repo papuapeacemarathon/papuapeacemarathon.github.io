@@ -20,19 +20,23 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <script>
+  /* ====== Palet brand Papua Peace (diambil dari brand_colors) ====== */
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          ink:    '#0B0807',
-          coal:   '#15100E',
-          maroon: '#6E1515',
-          brick:  '#A12A22',
-          ember:  '#D14A2B',
-          gold:   '#C9972B',
-          sun:    '#E8B84B',
-          sand:   '#E7DAC4',
-          cream:  '#FBF6EC',
+          forest:  '#0E2A21',   // hijau tergelap — dasar
+          pine:    '#123A2C',   // hijau tua
+          jungle:  '#1A4A38',   // hijau tua brand (lockup)
+          emerald2:'#2E8B6E',   // hijau brand (teks PEACE)
+          moss:    '#26735B',
+          gold:    '#F2C230',   // kuning brand (teks MARATHON)
+          amber2:  '#D9A528',
+          wine:    '#6E2140',   // maroon brand
+          wine2:   '#8A2C50',
+          cream:   '#F3EBD8',   // krem brand
+          sand:    '#DCCFA8',
+          bark:    '#3A2F21',
         },
         fontFamily: {
           display: ['Anton', 'Impact', 'sans-serif'],
@@ -46,210 +50,191 @@
 
 <style>
   html { -webkit-font-smoothing: antialiased; }
-  body { background:#0B0807; color:#FBF6EC; overflow-x:hidden; }
+  body { background:#0E2A21; color:#F3EBD8; overflow-x:hidden; }
+  ::selection { background:#F2C230; color:#0E2A21; }
 
-  ::selection { background:#C9972B; color:#15100E; }
-
-  /* ---------- Scrollbar ---------- */
   ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background:#15100E; }
-  ::-webkit-scrollbar-thumb { background:#6E1515; border-radius:99px; }
-  ::-webkit-scrollbar-thumb:hover { background:#A12A22; }
+  ::-webkit-scrollbar-track { background:#123A2C; }
+  ::-webkit-scrollbar-thumb { background:#2E8B6E; border-radius:99px; }
+  ::-webkit-scrollbar-thumb:hover { background:#F2C230; }
 
-  /* ---------- Texture & motif ---------- */
+  /* ---------- Pola cendrawasih brand ---------- */
+  .pat          { background-repeat:repeat; background-size:560px auto; }
+  .pat-green    { background-image:url('./img/pattern-green.jpg'); }
+  .pat-gold     { background-image:url('./img/pattern-gold.jpg'); }
+  .pat-cream    { background-image:url('./img/pattern-cream.jpg'); }
+  .pat-maroon   { background-image:url('./img/pattern-maroon.jpg'); }
+
   .grain::after{
-    content:""; position:absolute; inset:0; pointer-events:none; opacity:.14; mix-blend-mode:overlay;
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.12; mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .motif{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23C9972B' stroke-width='1.2' opacity='.45'%3E%3Cpath d='M0 30c30 0 30 24 60 24s30-24 60-24 30 24 60 24'/%3E%3Cpath d='M0 60c30 0 30 24 60 24s30-24 60-24 30 24 60 24'/%3E%3Cpath d='M0 90c30 0 30 24 60 24s30-24 60-24 30 24 60 24'/%3E%3Cpath d='M0 120c30 0 30 24 60 24s30-24 60-24 30 24 60 24'/%3E%3Cpath d='M0 150c30 0 30 24 60 24s30-24 60-24 30 24 60 24'/%3E%3C/g%3E%3C/svg%3E");
-  }
-  .topo{
-    background-image:
-      radial-gradient(circle at 20% 30%, rgba(201,151,43,.18) 0 2px, transparent 3px),
-      radial-gradient(circle at 70% 60%, rgba(161,42,34,.22) 0 2px, transparent 3px);
-    background-size: 120px 120px, 90px 90px;
-  }
 
-  /* ---------- Headline ---------- */
-  .display { font-family:'Anton',sans-serif; letter-spacing:.01em; line-height:.9; text-transform:uppercase; }
-  .stroke-text{
-    -webkit-text-stroke:1.5px rgba(231,218,196,.55); color:transparent;
-  }
+  /* ---------- Tipografi ---------- */
+  .display { font-family:'Anton',sans-serif; letter-spacing:.01em; line-height:.92; text-transform:uppercase; }
+  .stroke-cream { -webkit-text-stroke:1.5px rgba(243,235,216,.6); color:transparent; }
+  .stroke-forest{ -webkit-text-stroke:1.5px rgba(14,42,33,.45); color:transparent; }
   .gold-text{
-    background:linear-gradient(100deg,#E8B84B 0%,#C9972B 38%,#FBF6EC 52%,#C9972B 66%,#8C641A 100%);
+    background:linear-gradient(100deg,#F6D463 0%,#F2C230 40%,#FFF6DF 52%,#F2C230 64%,#B8831B 100%);
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
 
-  /* ---------- Reveal on scroll ---------- */
-  [data-reveal]{ opacity:0; transform:translateY(38px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  /* ---------- Reveal ---------- */
+  [data-reveal]{ opacity:0; transform:translateY(34px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
   [data-reveal].is-in{ opacity:1; transform:none; }
-  [data-reveal-delay="1"]{ transition-delay:.12s } [data-reveal-delay="2"]{ transition-delay:.24s }
-  [data-reveal-delay="3"]{ transition-delay:.36s } [data-reveal-delay="4"]{ transition-delay:.48s }
+  [data-reveal-delay="1"]{ transition-delay:.1s } [data-reveal-delay="2"]{ transition-delay:.2s }
+  [data-reveal-delay="3"]{ transition-delay:.3s } [data-reveal-delay="4"]{ transition-delay:.4s }
 
   /* ---------- Marquee ---------- */
   .marquee { display:flex; width:max-content; animation:slide 38s linear infinite; }
   .marquee:hover { animation-play-state:paused; }
   @keyframes slide { to { transform:translateX(-50%); } }
 
-  /* ---------- Misc anim ---------- */
   @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
   .floaty { animation:floaty 7s ease-in-out infinite; }
   @keyframes pulseRing { 0%{transform:scale(.85);opacity:.8} 100%{transform:scale(1.6);opacity:0} }
-  .ring::before{ content:""; position:absolute; inset:0; border-radius:99px; border:1px solid #C9972B; animation:pulseRing 2.6s ease-out infinite; }
+  .ring::before{ content:""; position:absolute; inset:0; border-radius:99px; border:1px solid #F2C230; animation:pulseRing 2.6s ease-out infinite; }
 
   .link-underline{ position:relative; }
-  .link-underline::after{
-    content:""; position:absolute; left:0; bottom:-6px; height:1px; width:0; background:#C9972B; transition:width .35s ease;
-  }
+  .link-underline::after{ content:""; position:absolute; left:0; bottom:-6px; height:1px; width:0; background:#F2C230; transition:width .35s ease; }
   .link-underline:hover::after{ width:100%; }
 
-  .card-hover { transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s, background-color .4s; }
+  .card-hover { transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s, background-color .4s, box-shadow .4s; }
   .card-hover:hover { transform: translateY(-10px); }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     [data-reveal]{ opacity:1; transform:none; }
   }
+  [x-cloak]{ display:none !important; }
 </style>
 </head>
 
-<body x-data="site()" x-init="init()" class="font-sans antialiased relative pb-20 lg:pb-0">
+<body x-data="site()" class="relative pb-20 font-sans antialiased lg:pb-0">
 
-<!-- ================= SCROLL PROGRESS ================= -->
-<div class="fixed top-0 left-0 right-0 h-[3px] z-[90] bg-transparent">
-  <div class="h-full bg-gradient-to-r from-maroon via-gold to-sun transition-[width] duration-150" :style="`width:${progress}%`"></div>
+<!-- ================= PROGRESS ================= -->
+<div class="fixed inset-x-0 top-0 z-[90] h-[3px] bg-transparent">
+  <div class="h-full bg-gradient-to-r from-emerald2 via-gold to-wine transition-[width] duration-150" :style="`width:${progress}%`"></div>
 </div>
 
 <!-- ================= NAVBAR ================= -->
 <header class="fixed inset-x-0 top-0 z-[80] transition-all duration-500"
-        :class="scrolled ? 'bg-ink/90 backdrop-blur-xl border-b border-white/10 py-2' : 'bg-transparent py-4'">
+        :class="scrolled ? 'border-b border-cream/10 bg-forest/95 py-2 backdrop-blur-xl' : 'bg-transparent py-4'">
   <nav class="mx-auto flex max-w-7xl items-center justify-center px-5 lg:justify-between">
-    <a href="#hero" class="group flex items-center gap-3">
+    <a href="#hero" class="flex items-center gap-3">
       <img src="./img/logo.png" alt="Papua Peace Run 2027"
-           class="transition-all duration-500 drop-shadow-[0_6px_18px_rgba(201,151,43,.25)]"
+           class="transition-all duration-500 drop-shadow-[0_6px_18px_rgba(46,139,110,.35)]"
            :class="scrolled ? 'h-11' : 'h-14'">
-      <span class="hidden lg:block leading-tight">
+      <span class="hidden leading-tight lg:block">
         <span class="block display text-sm tracking-widest text-cream">Papua Peace Run</span>
-        <span class="block text-[10px] tracking-ultra text-gold/80">2027 · JAYAPURA</span>
+        <span class="block text-[10px] tracking-ultra text-gold">2027 · JAYAPURA</span>
       </span>
     </a>
 
-    <ul class="hidden lg:flex items-center gap-8 text-[12px] font-bold uppercase tracking-[0.18em] text-cream/80">
+    <ul class="hidden items-center gap-8 text-[12px] font-bold uppercase tracking-[0.18em] text-cream/80 lg:flex">
       <template x-for="l in nav" :key="l.href">
-        <li><a :href="l.href" x-text="l.label" class="link-underline hover:text-cream transition"></a></li>
+        <li><a :href="l.href" x-text="l.label" class="link-underline transition hover:text-gold"></a></li>
       </template>
     </ul>
 
-    <div class="hidden items-center gap-3 lg:flex">
-      <a href="login.html" class="inline-flex items-center gap-2 rounded-full border border-cream/25 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-ink">
-        <i class="fa-solid fa-right-to-bracket"></i> Masuk
-      </a>
-      <a href="daftar.html" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-maroon to-brick px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-cream shadow-lg shadow-maroon/30 transition-all duration-300 hover:from-brick hover:to-ember">
-        <i class="fa-solid fa-person-running"></i> Daftar
-      </a>
-    </div>
+    <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
+       class="hidden items-center gap-2 rounded-full bg-gold px-6 py-3 text-xs font-bold uppercase tracking-widest text-forest shadow-lg shadow-gold/20 transition-all duration-300 hover:bg-cream lg:inline-flex">
+      Register Now <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+    </a>
   </nav>
 </header>
 
 <!-- ================= HERO ================= -->
-<section id="hero" class="relative min-h-[100svh] overflow-hidden grain flex items-center">
-  <!-- layered parallax background -->
-  <div class="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,#2A1210_0%,#15100E_45%,#0B0807_100%)]"></div>
-  <div data-parallax="0.18" class="absolute inset-x-0 -top-32 -bottom-32 motif opacity-[.13]"></div>
+<section id="hero" class="relative flex min-h-[100svh] items-center overflow-hidden grain">
+  <div class="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,#1A4A38_0%,#123A2C_45%,#0E2A21_100%)]"></div>
+  <div data-parallax="0.16" class="pat pat-green absolute inset-x-0 -top-32 -bottom-32 opacity-[.35] mix-blend-luminosity"></div>
 
-  <!-- sun / horizon glow -->
-  <div class="absolute left-1/2 top-[18%] -ml-[23rem] h-[46rem] w-[46rem]">
-    <div data-parallax="0.3" class="h-full w-full rounded-full bg-[radial-gradient(circle,rgba(201,151,43,.35)_0%,rgba(161,42,34,.18)_38%,transparent_68%)] blur-2xl"></div>
+  <!-- matahari emas -->
+  <div class="absolute left-1/2 top-[16%] -ml-[22rem] h-[44rem] w-[44rem]">
+    <div data-parallax="0.28" class="h-full w-full rounded-full bg-[radial-gradient(circle,rgba(242,194,48,.32)_0%,rgba(46,139,110,.22)_40%,transparent_68%)] blur-2xl"></div>
   </div>
 
-  <!-- mountain silhouettes -->
-  <svg data-parallax="0.12" class="absolute bottom-0 left-0 w-[160%] md:w-full text-maroon/35" viewBox="0 0 1440 320" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+  <!-- siluet pegunungan -->
+  <svg data-parallax="0.12" class="absolute bottom-0 left-0 w-[160%] text-emerald2/30 md:w-full" viewBox="0 0 1440 320" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
     <path d="M0 220 L180 120 L320 210 L470 90 L640 215 L800 130 L980 230 L1150 140 L1300 225 L1440 160 L1440 320 L0 320 Z"/>
   </svg>
-  <svg data-parallax="0.05" class="absolute bottom-0 left-0 w-[160%] md:w-full text-ink" viewBox="0 0 1440 220" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+  <svg data-parallax="0.05" class="absolute bottom-0 left-0 w-[160%] text-forest md:w-full" viewBox="0 0 1440 220" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
     <path d="M0 150 L200 90 L380 160 L560 100 L760 170 L960 110 L1180 175 L1440 115 L1440 220 L0 220 Z"/>
   </svg>
 
-  <!-- Youtefa bridge arch line -->
-  <svg class="absolute bottom-[12%] left-1/2 -translate-x-1/2 w-[90%] max-w-5xl opacity-20" viewBox="0 0 800 140" fill="none" stroke="#C9972B" stroke-width="2" aria-hidden="true">
+  <!-- lengkung Jembatan Youtefa -->
+  <svg class="absolute bottom-[12%] left-1/2 w-[90%] max-w-5xl -translate-x-1/2 opacity-20" viewBox="0 0 800 140" fill="none" stroke="#F2C230" stroke-width="2" aria-hidden="true">
     <path d="M20 130 Q400 -40 780 130" />
     <path d="M60 130 Q400 10 740 130" opacity=".6" />
-    <g opacity=".5">
-      <path d="M120 130V96M200 130V72M280 130V56M360 130V46M440 130V46M520 130V56M600 130V72M680 130V96"/>
-    </g>
+    <g opacity=".5"><path d="M120 130V96M200 130V72M280 130V56M360 130V46M440 130V46M520 130V56M600 130V72M680 130V96"/></g>
     <path d="M0 130h800" />
   </svg>
 
   <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-28 pt-28 sm:pb-24 sm:pt-32">
     <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-      <!-- copy -->
       <div class="lg:col-span-7">
-        <p data-reveal class="inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-ultra text-gold">
-          <span class="relative inline-flex h-2 w-2 ring"><span class="h-2 w-2 rounded-full bg-gold"></span></span>
+        <p data-reveal class="inline-flex items-center gap-3 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-ultra text-gold">
+          <span class="ring relative inline-flex h-2 w-2"><span class="h-2 w-2 rounded-full bg-gold"></span></span>
           Sabtu · 20 Maret 2027
         </p>
 
         <h1 data-reveal data-reveal-delay="1" class="display mt-6 text-[clamp(2.5rem,10vw,7.5rem)]">
           <span class="block text-cream">Berlari</span>
           <span class="block gold-text">Berdampingan</span>
-          <span class="block stroke-text">Sebagai Satu Papua</span>
+          <span class="block stroke-cream">Sebagai Satu Papua</span>
         </h1>
 
-        <p data-reveal data-reveal-delay="2" class="mt-7 max-w-xl text-base md:text-lg leading-relaxed text-sand/75">
+        <p data-reveal data-reveal-delay="2" class="mt-7 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
           Papua Peace Run 2027 adalah gerakan lari lintas komunitas yang mengajak Papua dan Indonesia
-          untuk <span class="text-cream font-semibold">mengalami, membangun, dan merayakan perdamaian</span> bersama —
+          untuk <span class="font-semibold text-gold">mengalami, membangun, dan merayakan perdamaian</span> bersama —
           dari Jayapura hingga Muara Tami.
         </p>
 
         <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-          <a href="daftar.html" class="group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-maroon to-brick px-7 py-4 text-xs font-bold uppercase tracking-widest shadow-xl shadow-maroon/30 transition-all duration-300 hover:shadow-brick/40 sm:px-8 sm:text-sm">
-            Ambil Slot Early Bird
+          <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
+             class="group inline-flex items-center justify-center gap-3 rounded-full bg-gold px-8 py-4 text-xs font-bold uppercase tracking-widest text-forest shadow-xl shadow-gold/25 transition-all duration-300 hover:bg-cream sm:text-sm">
+            Register Now
             <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1.5"></i>
           </a>
-          <a href="#mitra" class="inline-flex items-center justify-center gap-3 rounded-full border border-cream/25 px-7 py-4 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-ink sm:px-8 sm:text-sm">
+          <a href="#mitra" class="inline-flex items-center justify-center gap-3 rounded-full border border-cream/30 px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-forest sm:text-sm">
             <i class="fa-solid fa-handshake-angle"></i> Jadi Mitra
           </a>
         </div>
 
-        <!-- quick facts -->
-        <dl data-reveal data-reveal-delay="4" class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4 lg:mt-12">
+        <dl data-reveal data-reveal-delay="4" class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-cream/15 bg-cream/15 sm:grid-cols-4 lg:mt-12">
           <template x-for="f in facts" :key="f.label">
-            <div class="bg-ink/80 px-4 py-4 sm:px-5 sm:py-5">
-              <dt class="text-[9px] uppercase tracking-[0.2em] text-gold/80 sm:text-[10px] sm:tracking-ultra" x-text="f.label"></dt>
+            <div class="bg-forest/85 px-4 py-4 sm:px-5 sm:py-5">
+              <dt class="text-[9px] uppercase tracking-[0.2em] text-gold sm:text-[10px]" x-text="f.label"></dt>
               <dd class="display mt-2 text-lg text-cream sm:text-xl" x-text="f.value"></dd>
             </div>
           </template>
         </dl>
       </div>
 
-      <!-- logo -->
       <div class="lg:col-span-5">
         <div data-parallax="-0.08" class="relative mx-auto max-w-md">
-          <div class="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(201,151,43,.22),transparent_65%)] blur-2xl"></div>
-          <img src="./img/logo.png" alt="Logo Papua Peace Run 2027"
-               class="floaty relative w-full drop-shadow-[0_25px_60px_rgba(0,0,0,.65)]">
+          <div class="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(242,194,48,.22),transparent_65%)] blur-2xl"></div>
+          <img src="./img/logo.png" alt="Logo Papua Peace Run 2027" class="floaty relative w-full drop-shadow-[0_25px_60px_rgba(0,0,0,.55)]">
         </div>
       </div>
     </div>
   </div>
 
-  <!-- scroll cue -->
-  <a href="#tentang" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[10px] uppercase tracking-ultra text-sand/50 hover:text-gold transition">
-    Gulir
-    <span class="h-10 w-px bg-gradient-to-b from-gold to-transparent"></span>
+  <a href="#tentang" class="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] uppercase tracking-ultra text-cream/50 transition hover:text-gold">
+    Gulir <span class="h-10 w-px bg-gradient-to-b from-gold to-transparent"></span>
   </a>
 </section>
 
 <!-- ================= MARQUEE ================= -->
-<div class="relative border-y border-white/10 bg-maroon/90 py-4 overflow-hidden">
-  <div class="marquee items-center text-cream/90">
+<div class="relative overflow-hidden border-y border-forest/20 bg-gold py-4">
+  <div class="pat pat-gold absolute inset-0 opacity-60"></div>
+  <div class="marquee relative items-center text-forest">
     <template x-for="i in 2" :key="i">
       <div class="flex items-center gap-10 pr-10">
         <template x-for="w in ['Satu Papua','5K','Damai','10K','Perjumpaan','21K','Persahabatan','42K','Kampung Perdamaian','20·03·2027']" :key="w">
           <span class="flex items-center gap-10">
             <span class="display whitespace-nowrap text-lg sm:text-xl md:text-3xl" x-text="w"></span>
-            <i class="fa-solid fa-shoe-prints text-gold/70 text-sm"></i>
+            <i class="fa-solid fa-shoe-prints text-sm text-wine"></i>
           </span>
         </template>
       </div>
@@ -257,100 +242,103 @@
   </div>
 </div>
 
-<!-- ================= TENTANG ================= -->
-<section id="tentang" class="relative py-20 md:py-36 overflow-hidden">
-  <div data-parallax="0.1" class="absolute -right-24 top-10 h-96 w-96 rounded-full bg-maroon/20 blur-3xl"></div>
-  <div class="relative mx-auto max-w-7xl px-5 grid lg:grid-cols-12 gap-14">
+<!-- ================= TENTANG (terang) ================= -->
+<section id="tentang" class="relative overflow-hidden bg-cream py-20 text-forest md:py-32">
+  <div class="pat pat-cream absolute inset-0 opacity-70"></div>
+  <div class="absolute inset-0 bg-cream/70"></div>
+
+  <div class="relative mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:gap-14">
     <div class="lg:col-span-5">
-      <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">01 — Tentang</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
-        Dari pulau perang<br><span class="gold-text">menjadi pulau damai</span>
+      <p data-reveal class="text-[11px] uppercase tracking-ultra text-emerald2">01 — Tentang</p>
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-wine">
+        Dari pulau perang<br><span class="text-emerald2">menjadi pulau damai</span>
       </h2>
-      <div data-reveal data-reveal-delay="2" class="mt-8 h-px w-28 bg-gradient-to-r from-gold to-transparent"></div>
-      <p data-reveal data-reveal-delay="2" class="mt-8 text-sand/70 leading-relaxed">
+      <div data-reveal data-reveal-delay="2" class="mt-8 h-1 w-28 rounded-full bg-gradient-to-r from-gold to-transparent"></div>
+      <p data-reveal data-reveal-delay="2" class="mt-8 leading-relaxed text-bark/80">
         Terlalu lama pulau kita dibagi-bagi oleh suku, agama, dan latar belakang. Papua Peace Run hadir
         untuk menantang pola tersebut melalui perjumpaan yang nyata dan positif.
       </p>
-      <p data-reveal data-reveal-delay="3" class="mt-5 text-sand/70 leading-relaxed">
+      <p data-reveal data-reveal-delay="3" class="mt-5 leading-relaxed text-bark/80">
         Kebencian tumbuh ketika orang tetap menjadi orang asing satu sama lain. Ketika kita berjalan,
-        mendengar, dan berlari berdampingan — <span class="text-cream font-semibold">orang asing menjadi sahabat,
+        mendengar, dan berlari berdampingan — <span class="font-semibold text-wine">orang asing menjadi sahabat,
         dan persahabatan tidak memberi ruang bagi kebencian.</span>
       </p>
     </div>
 
-    <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6 content-start">
-      <div data-reveal class="sm:col-span-2 rounded-3xl border border-gold/20 bg-gradient-to-br from-coal to-ink p-8 card-hover hover:border-gold/50">
-        <i class="fa-solid fa-eye text-gold text-2xl"></i>
-        <h3 class="display mt-5 text-2xl text-cream">Visi</h3>
-        <p class="mt-3 text-sand/70 leading-relaxed">
+    <div class="grid content-start gap-6 sm:grid-cols-2 lg:col-span-7">
+      <div data-reveal class="card-hover rounded-3xl border border-emerald2/25 bg-white/70 p-8 shadow-sm backdrop-blur-sm hover:border-emerald2/60 sm:col-span-2">
+        <i class="fa-solid fa-eye text-2xl text-emerald2"></i>
+        <h3 class="display mt-5 text-2xl text-wine">Visi</h3>
+        <p class="mt-3 leading-relaxed text-bark/80">
           Menunjukkan Papua kepada Indonesia sebagai pulau yang indah, ramah, beragam, dan damai; tempat di mana
           perbedaan suku, agama, dan latar belakang tidak harus menjadi alasan perpecahan.
         </p>
       </div>
 
       <template x-for="(m,i) in misi" :key="i">
-        <div data-reveal :data-reveal-delay="(i%2)+1" class="rounded-3xl border border-white/10 bg-coal/60 p-7 card-hover hover:border-gold/40 hover:bg-coal">
+        <div data-reveal :data-reveal-delay="(i%2)+1" class="card-hover rounded-3xl border border-bark/10 bg-white/70 p-7 backdrop-blur-sm hover:border-gold">
           <div class="flex items-center gap-3">
-            <span class="grid h-10 w-10 place-items-center rounded-full bg-maroon/40 text-gold">
+            <span class="grid h-10 w-10 place-items-center rounded-full bg-emerald2/15 text-emerald2">
               <i class="fa-solid" :class="m.icon"></i>
             </span>
-            <span class="display text-sm tracking-widest text-gold/80" x-text="'Misi 0'+(i+1)"></span>
+            <span class="display text-sm tracking-widest text-wine" x-text="'Misi 0'+(i+1)"></span>
           </div>
-          <p class="mt-4 text-sand/75 leading-relaxed text-[15px]" x-text="m.text"></p>
+          <p class="mt-4 text-[15px] leading-relaxed text-bark/80" x-text="m.text"></p>
         </div>
       </template>
     </div>
   </div>
 </section>
 
-<!-- ================= PARALLAX QUOTE ================= -->
-<section class="relative h-[70vh] md:h-[85vh] overflow-hidden grain flex items-center justify-center">
-  <div class="absolute inset-0 bg-[linear-gradient(180deg,#0B0807_0%,#3A1512_45%,#0B0807_100%)]"></div>
-  <div data-parallax="0.22" class="absolute inset-x-0 -top-32 -bottom-32 motif opacity-20"></div>
-  <div data-parallax="0.35" class="absolute inset-x-0 -top-40 -bottom-40 topo opacity-40"></div>
-  <div class="absolute inset-0 bg-ink/35"></div>
+<!-- ================= KUTIPAN (maroon) ================= -->
+<section class="relative flex h-[70vh] items-center justify-center overflow-hidden grain md:h-[85vh]">
+  <div class="absolute inset-0 bg-wine"></div>
+  <div data-parallax="0.2" class="pat pat-maroon absolute inset-x-0 -top-32 -bottom-32 opacity-80"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-forest/60 via-transparent to-forest/70"></div>
 
   <div class="relative z-10 mx-auto max-w-5xl px-6 text-center">
-    <i data-reveal class="fa-solid fa-dove text-gold text-3xl"></i>
+    <i data-reveal class="fa-solid fa-dove text-3xl text-gold"></i>
     <p data-reveal data-reveal-delay="1" class="display mt-7 text-[clamp(1.5rem,5.5vw,4rem)] leading-[1.05] text-cream">
       “Jalan yang ditempuh panjang, dan <span class="gold-text">tidak ada yang menyelesaikannya sendirian.</span>”
     </p>
-    <p data-reveal data-reveal-delay="2" class="mt-7 text-sand/60 text-sm tracking-widest uppercase">Papua Peace Run 2027</p>
+    <p data-reveal data-reveal-delay="2" class="mt-7 text-sm uppercase tracking-widest text-cream/60">Papua Peace Run 2027</p>
   </div>
 </section>
 
-<!-- ================= PENGALAMAN / RUTE ================= -->
-<section id="rute" class="relative py-20 md:py-36">
-  <div class="mx-auto max-w-7xl px-5">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<!-- ================= RUTE (gelap) ================= -->
+<section id="rute" class="relative overflow-hidden bg-pine py-20 md:py-32">
+  <div data-parallax="0.12" class="pat pat-green absolute inset-x-0 -top-24 -bottom-24 opacity-25 mix-blend-luminosity"></div>
+
+  <div class="relative mx-auto max-w-7xl px-5">
+    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
       <div>
         <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">02 — Pengalaman</p>
         <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
-          Satu Lintasan,<br><span class="stroke-text">Tiga Perjumpaan</span>
+          Satu Lintasan,<br><span class="stroke-cream">Tiga Perjumpaan</span>
         </h2>
       </div>
-      <p data-reveal data-reveal-delay="2" class="max-w-sm text-sand/65 leading-relaxed">
+      <p data-reveal data-reveal-delay="2" class="max-w-sm leading-relaxed text-cream/65">
         Rute membentang dari jantung kota Jayapura, menyusuri Teluk Youtefa, hingga lanskap terbuka Muara Tami.
       </p>
     </div>
 
-    <div class="mt-16 space-y-6">
+    <div class="mt-14 space-y-6">
       <template x-for="(s,i) in stages" :key="i">
-        <article data-reveal class="group relative overflow-hidden rounded-3xl border border-white/10 bg-coal/50 card-hover hover:border-gold/40">
-          <div class="absolute inset-0 motif opacity-[.06] group-hover:opacity-[.14] transition-opacity duration-700"></div>
-          <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-maroon via-brick to-gold opacity-60 group-hover:opacity-100 transition"></div>
-          <div class="relative grid md:grid-cols-12 gap-6 p-8 md:p-10 items-center">
+        <article data-reveal class="group card-hover relative overflow-hidden rounded-3xl border border-cream/10 bg-forest/70 hover:border-gold/60">
+          <div class="pat pat-green absolute inset-0 opacity-[.12] transition-opacity duration-700 group-hover:opacity-25"></div>
+          <div class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b from-emerald2 via-gold to-wine opacity-70 transition group-hover:opacity-100"></div>
+          <div class="relative grid items-center gap-6 p-7 md:grid-cols-12 md:p-10">
             <div class="md:col-span-2">
-              <span class="display text-5xl md:text-6xl text-cream/10 group-hover:text-gold/70 transition-colors duration-500" x-text="s.no"></span>
+              <span class="display text-5xl text-cream/10 transition-colors duration-500 group-hover:text-gold md:text-6xl" x-text="s.no"></span>
             </div>
             <div class="md:col-span-6">
-              <h3 class="display text-2xl md:text-3xl text-cream" x-text="s.title"></h3>
-              <p class="mt-3 text-sand/70 leading-relaxed" x-text="s.desc"></p>
+              <h3 class="display text-2xl text-cream md:text-3xl" x-text="s.title"></h3>
+              <p class="mt-3 leading-relaxed text-cream/70" x-text="s.desc"></p>
             </div>
-            <div class="md:col-span-4 flex md:justify-end">
+            <div class="flex md:col-span-4 md:justify-end">
               <div class="flex flex-wrap gap-2">
                 <template x-for="t in s.tags" :key="t">
-                  <span class="rounded-full border border-gold/25 bg-gold/5 px-4 py-1.5 text-[11px] uppercase tracking-widest text-gold" x-text="t"></span>
+                  <span class="rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-[11px] uppercase tracking-widest text-gold" x-text="t"></span>
                 </template>
               </div>
             </div>
@@ -361,123 +349,127 @@
   </div>
 </section>
 
-<!-- ================= KATEGORI ================= -->
-<section id="kategori" class="relative py-20 md:py-36 overflow-hidden">
-  <div class="absolute inset-0 bg-[radial-gradient(90%_60%_at_50%_0%,#1E0F0D_0%,#0B0807_70%)]"></div>
-  <div data-parallax="0.14" class="absolute inset-x-0 -top-24 -bottom-24 motif opacity-[.08]"></div>
+<!-- ================= KATEGORI (terang) ================= -->
+<section id="kategori" class="relative overflow-hidden bg-cream py-20 text-forest md:py-32">
+  <div class="pat pat-cream absolute inset-0 opacity-70"></div>
+  <div class="absolute inset-0 bg-cream/70"></div>
 
   <div class="relative mx-auto max-w-7xl px-5">
     <div class="text-center">
-      <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">03 — Kategori</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
-        Pilih <span class="gold-text">Jarakmu</span>
+      <p data-reveal class="text-[11px] uppercase tracking-ultra text-emerald2">03 — Kategori</p>
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-wine">
+        Pilih <span class="text-emerald2">Jarakmu</span>
       </h2>
-      <p data-reveal data-reveal-delay="2" class="mx-auto mt-5 max-w-xl text-sand/65">
+      <p data-reveal data-reveal-delay="2" class="mx-auto mt-5 max-w-xl text-bark/75">
         Empat kategori untuk semua tingkat — dari langkah pertama keluarga hingga maraton penuh yang mengajak keluar dari zona nyaman.
       </p>
     </div>
 
-    <div class="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       <template x-for="(c,i) in categories" :key="c.km">
         <div data-reveal :data-reveal-delay="i"
-             class="group relative overflow-hidden rounded-3xl border border-white/10 bg-coal/60 p-8 card-hover hover:border-gold/50">
-          <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-maroon/25 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+             class="group card-hover relative flex flex-col overflow-hidden rounded-3xl border border-bark/10 bg-white/80 p-7 shadow-sm backdrop-blur-sm hover:border-emerald2/60 hover:shadow-xl">
+          <span class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-emerald2/10 opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100"></span>
           <div class="relative">
-            <span class="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-sand/60" x-text="c.tag"></span>
-            <h3 class="display mt-6 text-6xl gold-text" x-text="c.km"></h3>
-            <p class="mt-4 text-sand/70 text-sm leading-relaxed" x-text="c.desc"></p>
-            <ul class="mt-6 space-y-2 text-[13px] text-sand/60">
+            <span class="inline-flex items-center rounded-full border border-bark/15 px-3 py-1 text-[10px] uppercase tracking-widest text-bark/60" x-text="c.tag"></span>
+            <h3 class="display mt-6 text-6xl text-wine" x-text="c.km"></h3>
+            <p class="mt-4 text-sm leading-relaxed text-bark/75" x-text="c.desc"></p>
+            <ul class="mt-6 space-y-2 text-[13px] text-bark/70">
               <template x-for="p in c.points" :key="p">
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-check text-gold text-[11px] mt-1"></i><span x-text="p"></span>
-                </li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check mt-1 text-[11px] text-emerald2"></i><span x-text="p"></span></li>
               </template>
             </ul>
-            <div class="mt-7 flex items-center justify-between border-t border-white/10 pt-5">
-              <span class="text-[10px] uppercase tracking-widest text-sand/50">Flag off</span>
-              <span class="display text-lg text-cream" x-text="c.start"></span>
+            <div class="mt-7 flex items-center justify-between border-t border-bark/10 pt-5">
+              <span class="text-[10px] uppercase tracking-widest text-bark/50">Flag off</span>
+              <span class="display text-lg text-emerald2" x-text="c.start"></span>
             </div>
           </div>
         </div>
       </template>
     </div>
+
+    <div data-reveal class="mt-10 text-center">
+      <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-3 rounded-full bg-wine px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream shadow-lg shadow-wine/25 transition hover:bg-emerald2">
+        Register Now <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      </a>
+      <p class="mt-3 text-xs text-bark/60">Pendaftaran dikelola melalui mitra penyelenggara resmi.</p>
+    </div>
   </div>
 </section>
 
-<!-- ================= DAMPAK / ANGKA ================= -->
-<section id="dampak" class="relative py-16 md:py-32 overflow-hidden border-y border-white/10">
-  <div class="absolute inset-0 bg-[linear-gradient(120deg,#6E1515_0%,#2A1210_55%,#0B0807_100%)]"></div>
-  <div data-parallax="0.18" class="absolute inset-x-0 -top-24 -bottom-24 motif opacity-[.12]"></div>
+<!-- ================= DAMPAK (hijau) ================= -->
+<section id="dampak" class="relative overflow-hidden border-y border-cream/10 py-16 md:py-28">
+  <div class="absolute inset-0 bg-emerald2"></div>
+  <div data-parallax="0.16" class="pat pat-green absolute inset-x-0 -top-24 -bottom-24 opacity-70"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-forest/70 via-transparent to-wine/40"></div>
 
   <div class="relative mx-auto max-w-7xl px-5">
     <div class="max-w-2xl">
-      <p data-reveal class="text-[11px] uppercase tracking-ultra text-sun">04 — Dampak</p>
+      <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">04 — Dampak</p>
       <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(1.9rem,6vw,4rem)] text-cream">
         Pesan perdamaian menjadi<br><span class="gold-text">pengalaman nyata</span>
       </h2>
     </div>
 
-    <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-px rounded-3xl overflow-hidden border border-white/15 bg-white/10">
+    <div class="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-cream/20 bg-cream/20 lg:grid-cols-4">
       <template x-for="(s,i) in stats" :key="s.label">
-        <div data-reveal :data-reveal-delay="i" class="bg-ink/70 px-6 py-10 text-center">
-          <div class="display text-4xl md:text-5xl gold-text">
+        <div data-reveal :data-reveal-delay="i" class="bg-forest/80 px-6 py-10 text-center">
+          <div class="display text-4xl gold-text md:text-5xl">
             <span x-text="s.shown"></span><span x-text="s.suffix"></span>
           </div>
-          <p class="mt-3 text-[11px] uppercase tracking-widest text-sand/60" x-text="s.label"></p>
+          <p class="mt-3 text-[11px] uppercase tracking-widest text-cream/65" x-text="s.label"></p>
         </div>
       </template>
     </div>
 
-    <div class="mt-12 grid md:grid-cols-3 gap-6">
+    <div class="mt-10 grid gap-5 md:grid-cols-3">
       <template x-for="(d,i) in impacts" :key="i">
-        <div data-reveal :data-reveal-delay="i" class="rounded-2xl border border-white/10 bg-ink/50 p-6">
-          <i class="fa-solid text-gold text-xl" :class="d.icon"></i>
-          <p class="mt-4 text-sand/75 text-[15px] leading-relaxed" x-text="d.text"></p>
+        <div data-reveal :data-reveal-delay="i" class="rounded-2xl border border-cream/15 bg-forest/60 p-6">
+          <i class="fa-solid text-xl text-gold" :class="d.icon"></i>
+          <p class="mt-4 text-[15px] leading-relaxed text-cream/80" x-text="d.text"></p>
         </div>
       </template>
     </div>
   </div>
 </section>
 
-<!-- ================= KAMPUNG PERDAMAIAN ================= -->
-<section id="kampung" class="relative py-20 md:py-36 overflow-hidden">
-  <div data-parallax="0.12" class="absolute -left-32 bottom-0 h-[30rem] w-[30rem] rounded-full bg-gold/10 blur-3xl"></div>
+<!-- ================= KAMPUNG PERDAMAIAN (terang) ================= -->
+<section id="kampung" class="relative overflow-hidden bg-cream py-20 text-forest md:py-32">
+  <div class="pat pat-cream absolute inset-0 opacity-60"></div>
+  <div class="absolute inset-0 bg-cream/75"></div>
 
-  <div class="relative mx-auto max-w-7xl px-5 grid lg:grid-cols-2 gap-16 items-center">
+  <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:gap-16">
     <div>
-      <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">05 — Setelah Garis Finis</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
-        Kampung<br><span class="gold-text">Perdamaian</span>
+      <p data-reveal class="text-[11px] uppercase tracking-ultra text-emerald2">05 — Setelah Garis Finis</p>
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-wine">
+        Kampung<br><span class="text-emerald2">Perdamaian</span>
       </h2>
-      <p data-reveal data-reveal-delay="2" class="mt-7 text-sand/70 leading-relaxed">
-        Di <span class="text-cream font-semibold">Vtekya Restaurant</span>, perlombaan berlanjut menjadi perjumpaan.
+      <p data-reveal data-reveal-delay="2" class="mt-7 leading-relaxed text-bark/80">
+        Di <span class="font-semibold text-wine">Vtekya Restaurant</span>, perlombaan berlanjut menjadi perjumpaan.
         Stan mitra dan UMKM lokal, komunitas lari, kegiatan PeaceGen, area foto, musik, serta ruang bagi peserta
         dan penonton untuk saling mengenal.
       </p>
-      <p data-reveal data-reveal-delay="3" class="mt-5 text-sand/70 leading-relaxed">
+      <p data-reveal data-reveal-delay="3" class="mt-5 leading-relaxed text-bark/80">
         Di sinilah pesan acara tidak berhenti di garis finis.
       </p>
 
-      <div data-reveal data-reveal-delay="3" class="mt-10 flex flex-wrap gap-3">
+      <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-wrap gap-3">
         <template x-for="v in ['Stan UMKM','PeaceGen','Live Music','Photo Corner','Komunitas Lari','Kuliner Papua']" :key="v">
-          <span class="rounded-full border border-gold/25 bg-gold/5 px-5 py-2 text-xs uppercase tracking-widest text-gold" x-text="v"></span>
+          <span class="rounded-full border border-emerald2/30 bg-emerald2/10 px-5 py-2 text-xs uppercase tracking-widest text-emerald2" x-text="v"></span>
         </template>
       </div>
     </div>
 
-    <!-- rundown -->
-    <div data-reveal data-reveal-delay="2" class="relative rounded-3xl border border-white/10 bg-coal/60 p-8 md:p-10">
-      <div class="absolute inset-0 rounded-3xl motif opacity-[.07]"></div>
-      <h3 class="relative display text-xl tracking-widest text-cream">Rundown Hari-H</h3>
-      <ol class="relative mt-8 space-y-7 border-l border-white/10 pl-7">
+    <div data-reveal data-reveal-delay="2" class="relative overflow-hidden rounded-3xl border border-bark/10 bg-white/80 p-7 shadow-sm backdrop-blur-sm md:p-10">
+      <h3 class="display text-xl tracking-widest text-wine">Rundown Hari-H</h3>
+      <ol class="mt-8 space-y-7 border-l border-bark/15 pl-7">
         <template x-for="(r,i) in rundown" :key="i">
           <li class="relative">
-            <span class="absolute -left-[34px] top-1 grid h-4 w-4 place-items-center rounded-full border border-gold bg-ink">
-              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
-            </span>
-            <p class="display text-sm tracking-widest text-gold" x-text="r.time"></p>
-            <p class="mt-1 text-cream font-semibold" x-text="r.title"></p>
-            <p class="mt-1 text-sm text-sand/60" x-text="r.desc"></p>
+            <span class="absolute -left-[34px] top-1 grid h-4 w-4 place-items-center rounded-full border-2 border-gold bg-white"></span>
+            <p class="display text-sm tracking-widest text-emerald2" x-text="r.time"></p>
+            <p class="mt-1 font-semibold text-wine" x-text="r.title"></p>
+            <p class="mt-1 text-sm text-bark/70" x-text="r.desc"></p>
           </li>
         </template>
       </ol>
@@ -485,78 +477,120 @@
   </div>
 </section>
 
-<!-- ================= MITRA / SPONSORSHIP ================= -->
-<section id="mitra" class="relative py-20 md:py-36 overflow-hidden">
-  <div class="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_100%,#1E0F0D_0%,#0B0807_70%)]"></div>
+<!-- ================= LOKASI & PETA ================= -->
+<section id="lokasi" class="relative overflow-hidden bg-pine py-20 md:py-28">
+  <div class="pat pat-green absolute inset-0 opacity-20 mix-blend-luminosity"></div>
+
+  <div class="relative mx-auto max-w-7xl px-5">
+    <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+      <div>
+        <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">06 — Lokasi</p>
+        <h2 data-reveal data-reveal-delay="1" class="display mt-4 text-[clamp(1.9rem,6vw,4rem)] text-cream">Jayapura &amp; Muara Tami</h2>
+      </div>
+      <a data-reveal href="https://www.google.com/maps/search/?api=1&query=Jayapura,+Papua,+Indonesia" target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center gap-2 rounded-full border border-cream/30 px-6 py-3 text-[11px] font-bold uppercase tracking-widest text-cream transition hover:bg-cream hover:text-forest">
+        <i class="fa-solid fa-diamond-turn-right"></i> Buka di Google Maps
+      </a>
+    </div>
+
+    <div data-reveal class="mt-10 overflow-hidden rounded-3xl border border-cream/15 bg-forest/70">
+      <div class="grid md:grid-cols-12">
+        <div class="space-y-6 p-7 md:col-span-4">
+          <template x-for="p in titik" :key="p.label">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-widest text-gold" x-text="p.label"></p>
+              <p class="mt-1 font-semibold text-cream" x-text="p.name"></p>
+              <p class="text-sm text-cream/60" x-text="p.desc"></p>
+            </div>
+          </template>
+          <div class="rounded-xl border border-cream/10 bg-emerald2/10 p-4 text-xs text-cream/70">
+            <i class="fa-solid fa-circle-info text-gold"></i>
+            Peta rute resmi dan titik water station dirilis H-30 sebelum acara.
+          </div>
+        </div>
+        <div class="md:col-span-8">
+          <iframe title="Peta lokasi Papua Peace Run 2027"
+                  src="https://www.google.com/maps?q=Jayapura,%20Papua,%20Indonesia&z=12&output=embed"
+                  class="h-[300px] w-full border-0 sm:h-[380px] md:h-full md:min-h-[420px]"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MITRA ================= -->
+<section id="mitra" class="relative overflow-hidden bg-forest py-20 md:py-32">
+  <div class="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_100%,#1A4A38_0%,#0E2A21_70%)]"></div>
 
   <div class="relative mx-auto max-w-7xl px-5">
     <div class="text-center">
-      <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">06 — Kemitraan</p>
+      <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">07 — Kemitraan</p>
       <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(2rem,7vw,4.5rem)] text-cream">
         Berjalan <span class="gold-text">Bersama Kami</span>
       </h2>
-      <p data-reveal data-reveal-delay="2" class="mx-auto mt-5 max-w-2xl text-sand/65">
+      <p data-reveal data-reveal-delay="2" class="mx-auto mt-5 max-w-2xl text-cream/70">
         Dukungan mitra membantu menghadirkan perlombaan yang aman, tertib, terbuka, dan bermakna bagi sekitar 2.000 orang.
       </p>
     </div>
 
-    <div class="mt-16 grid md:grid-cols-3 gap-6 items-stretch">
+    <div class="mt-14 grid items-stretch gap-6 md:grid-cols-3">
       <template x-for="(t,i) in tiers" :key="t.name">
         <div data-reveal :data-reveal-delay="i"
-             class="relative flex flex-col rounded-3xl border p-8 card-hover"
-             :class="t.featured ? 'border-gold/60 bg-gradient-to-b from-maroon/35 to-coal shadow-2xl shadow-maroon/20' : 'border-white/10 bg-coal/50 hover:border-gold/40'">
-          <span x-show="t.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-ink">Paling Diminati</span>
+             class="card-hover relative flex flex-col rounded-3xl border p-8"
+             :class="t.featured ? 'border-gold/70 bg-gradient-to-b from-emerald2/25 to-forest shadow-2xl shadow-emerald2/10' : 'border-cream/12 bg-pine/60 hover:border-gold/50'">
+          <span x-show="t.featured" class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-forest">Paling Diminati</span>
           <h3 class="display text-3xl text-cream" x-text="t.name"></h3>
-          <p class="mt-2 text-xs uppercase tracking-widest text-gold/80" x-text="t.slot"></p>
-          <ul class="mt-7 space-y-3 text-sm text-sand/70 flex-1">
+          <p class="mt-2 text-xs uppercase tracking-widest text-gold" x-text="t.slot"></p>
+          <ul class="mt-7 flex-1 space-y-3 text-sm text-cream/75">
             <template x-for="b in t.benefits" :key="b">
-              <li class="flex items-start gap-3">
-                <i class="fa-solid fa-circle-check text-gold/80 text-xs mt-1"></i><span x-text="b"></span>
-              </li>
+              <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check mt-1 text-xs text-emerald2"></i><span x-text="b"></span></li>
             </template>
           </ul>
           <a href="#kontak" class="mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300"
-             :class="t.featured ? 'bg-gradient-to-r from-maroon to-brick text-cream hover:from-brick hover:to-ember' : 'border border-cream/20 text-cream hover:bg-cream hover:text-ink'">
+             :class="t.featured ? 'bg-gold text-forest hover:bg-cream' : 'border border-cream/25 text-cream hover:bg-cream hover:text-forest'">
             Ajukan Kemitraan <i class="fa-solid fa-arrow-right"></i>
           </a>
         </div>
       </template>
     </div>
 
-    <!-- logo wall placeholder -->
-    <div data-reveal class="mt-16 rounded-3xl border border-dashed border-white/15 bg-coal/30 p-10 text-center">
-      <p class="text-[10px] uppercase tracking-ultra text-sand/50">Didukung oleh</p>
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-10 opacity-50">
-        <template x-for="n in 6" :key="n">
-          <div class="h-10 w-28 rounded bg-cream/10"></div>
+    <!-- mitra penyelenggara -->
+    <div data-reveal class="mt-14 rounded-3xl border border-cream/15 bg-pine/50 p-8 text-center md:p-10">
+      <p class="text-[10px] uppercase tracking-ultra text-cream/50">Diselenggarakan bersama</p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
+        <template x-for="o in penyelenggara" :key="o">
+          <span class="rounded-full border border-cream/20 bg-forest/60 px-5 py-3 text-xs font-bold uppercase tracking-widest text-cream/80" x-text="o"></span>
         </template>
       </div>
-      <p class="mt-6 text-xs text-sand/40">Ruang untuk logo mitra Anda.</p>
+      <p class="mt-6 text-xs text-cream/45">Ruang untuk logo mitra Anda.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= FAQ ================= -->
-<section id="faq" class="relative py-20 md:py-36">
-  <div class="mx-auto max-w-4xl px-5">
+<!-- ================= FAQ (terang) ================= -->
+<section id="faq" class="relative overflow-hidden bg-cream py-20 text-forest md:py-32">
+  <div class="pat pat-cream absolute inset-0 opacity-60"></div>
+  <div class="absolute inset-0 bg-cream/80"></div>
+
+  <div class="relative mx-auto max-w-4xl px-5">
     <div class="text-center">
-      <p data-reveal class="text-[11px] uppercase tracking-ultra text-gold">07 — FAQ</p>
-      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(1.9rem,6vw,4rem)] text-cream">Pertanyaan Umum</h2>
+      <p data-reveal class="text-[11px] uppercase tracking-ultra text-emerald2">08 — FAQ</p>
+      <h2 data-reveal data-reveal-delay="1" class="display mt-5 text-[clamp(1.9rem,6vw,4rem)] text-wine">Pertanyaan Umum</h2>
     </div>
 
-    <div class="mt-14 divide-y divide-white/10 border-y border-white/10" x-data="{ open: 0 }">
+    <div class="mt-12 divide-y divide-bark/15 border-y border-bark/15" x-data="{ open: 0 }">
       <template x-for="(f,i) in faqs" :key="i">
         <div data-reveal>
-          <button @click="open === i ? open = null : open = i"
-                  class="flex w-full items-center justify-between gap-6 py-6 text-left group">
-            <span class="display text-lg md:text-xl text-cream group-hover:text-gold transition" x-text="f.q"></span>
-            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/15 text-gold transition-transform duration-300"
-                  :class="open === i && 'rotate-45 bg-gold text-ink border-gold'">
+          <button @click="open === i ? open = null : open = i" class="group flex w-full items-center justify-between gap-6 py-6 text-left">
+            <span class="display text-lg text-wine transition group-hover:text-emerald2 md:text-xl" x-text="f.q"></span>
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-bark/20 text-emerald2 transition-transform duration-300"
+                  :class="open === i && 'rotate-45 border-gold bg-gold text-forest'">
               <i class="fa-solid fa-plus text-xs"></i>
             </span>
           </button>
           <div x-show="open === i" x-collapse x-cloak>
-            <p class="pb-7 pr-12 text-sand/70 leading-relaxed" x-text="f.a"></p>
+            <p class="pb-7 pr-12 leading-relaxed text-bark/80" x-text="f.a"></p>
           </div>
         </div>
       </template>
@@ -564,58 +598,51 @@
   </div>
 </section>
 
-<!-- ================= CTA DAFTAR ================= -->
-<section id="daftar" class="relative overflow-hidden py-20 md:py-40 grain">
-  <div class="absolute inset-0 bg-[linear-gradient(180deg,#0B0807_0%,#5E1413_50%,#0B0807_100%)]"></div>
-  <div data-parallax="0.25" class="absolute inset-x-0 -top-28 -bottom-28 motif opacity-[.16]"></div>
-  <svg data-parallax="0.08" class="absolute bottom-0 w-full text-ink" viewBox="0 0 1440 200" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+<!-- ================= CTA REGISTER ================= -->
+<section id="daftar" class="relative overflow-hidden py-20 grain md:py-32">
+  <div class="absolute inset-0 bg-wine"></div>
+  <div data-parallax="0.22" class="pat pat-maroon absolute inset-x-0 -top-28 -bottom-28 opacity-80"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-forest/60 via-transparent to-forest/80"></div>
+  <svg data-parallax="0.08" class="absolute bottom-0 w-full text-forest" viewBox="0 0 1440 200" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
     <path d="M0 140 L240 80 L520 150 L760 90 L1040 160 L1440 100 L1440 200 L0 200 Z"/>
   </svg>
 
   <div class="relative z-10 mx-auto max-w-4xl px-5 text-center">
-    <img data-reveal src="./img/logo.png" alt="" class="mx-auto h-28 md:h-36 drop-shadow-[0_18px_40px_rgba(0,0,0,.6)]">
+    <img data-reveal src="./img/logo.png" alt="" class="mx-auto h-24 drop-shadow-[0_18px_40px_rgba(0,0,0,.5)] md:h-32">
     <h2 data-reveal data-reveal-delay="1" class="display mt-8 text-[clamp(2rem,8vw,5.5rem)] text-cream">
       Lintasi Garis Itu<br><span class="gold-text">Bersama Kami</span>
     </h2>
-    <p data-reveal data-reveal-delay="2" class="mt-6 text-sand/75">
+    <p data-reveal data-reveal-delay="2" class="mt-6 text-cream/80">
       5K · 10K · 21K · 42K — Jayapura &amp; Muara Tami, Papua · Sabtu, 20 Maret 2027
     </p>
 
     <div data-reveal data-reveal-delay="3" class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-      <a href="daftar.html" class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-maroon to-brick px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream shadow-xl shadow-maroon/30 transition-all duration-300 hover:from-brick hover:to-ember sm:w-auto">
-        <i class="fa-solid fa-person-running"></i> Daftar &amp; Pilih Paket
+      <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
+         class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-gold px-10 py-5 text-sm font-bold uppercase tracking-widest text-forest shadow-xl shadow-gold/25 transition hover:bg-cream sm:w-auto">
+        Register Now <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
       </a>
-      <a href="login.html" class="inline-flex w-full items-center justify-center gap-3 rounded-full border border-cream/25 px-8 py-4 text-xs font-bold uppercase tracking-widest text-cream transition-all duration-300 hover:bg-cream hover:text-ink sm:w-auto">
-        <i class="fa-solid fa-right-to-bracket"></i> Sudah punya akun
+      <a href="#faq" class="inline-flex w-full items-center justify-center gap-3 rounded-full border border-cream/30 px-10 py-5 text-sm font-bold uppercase tracking-widest text-cream transition hover:bg-cream hover:text-forest sm:w-auto">
+        <i class="fa-regular fa-circle-question"></i> Pertanyaan Umum
       </a>
     </div>
-
-    <form data-reveal data-reveal-delay="3" @submit.prevent="subscribe"
-          class="mx-auto mt-6 flex max-w-xl flex-col gap-3 sm:flex-row">
-      <input type="email" x-model="email" required placeholder="Alamat email kamu"
-             class="flex-1 rounded-full border border-white/20 bg-ink/60 px-6 py-4 text-sm text-cream placeholder:text-sand/40 outline-none focus:border-gold transition">
-      <button type="submit"
-              class="rounded-full bg-gradient-to-r from-gold to-sun px-8 py-4 text-xs font-bold uppercase tracking-widest text-ink hover:from-sun hover:to-gold transition-all duration-300">
-        Notifikasi Pendaftaran
-      </button>
-    </form>
-    <p x-show="sent" x-cloak x-transition class="mt-4 text-sm text-gold"><i class="fa-solid fa-circle-check"></i> Terima kasih! Kami akan mengabari kamu saat pendaftaran dibuka.</p>
-    <p data-reveal data-reveal-delay="4" class="mt-4 text-xs text-sand/45">Slot early bird terbatas · Kuota 1.000 pelari</p>
+    <p data-reveal data-reveal-delay="4" class="mt-5 text-xs text-cream/55">
+      Pendaftaran dibuka di platform mitra · Slot early bird terbatas · Kuota 1.000 pelari
+    </p>
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer id="kontak" class="relative border-t border-white/10 bg-ink">
+<footer id="kontak" class="relative border-t border-cream/10 bg-forest">
   <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 text-center md:grid-cols-12 md:gap-12 md:py-16 md:text-left">
     <div class="md:col-span-5">
       <img src="./img/logo.png" alt="Papua Peace Run 2027" class="mx-auto h-20 md:mx-0">
-      <p class="mx-auto mt-6 max-w-sm text-sm leading-relaxed text-sand/60 md:mx-0">
+      <p class="mx-auto mt-6 max-w-sm text-sm leading-relaxed text-cream/65 md:mx-0">
         Gerakan lari lintas komunitas yang mengajak Papua dan Indonesia untuk mengalami, membangun,
         dan merayakan perdamaian bersama.
       </p>
       <div class="mt-7 flex justify-center gap-3 md:justify-start">
         <template x-for="s in ['instagram','whatsapp','youtube','tiktok']" :key="s">
-          <a href="#" :aria-label="s" class="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-sand/70 hover:bg-gold hover:text-ink hover:border-gold transition">
+          <a href="#" :aria-label="s" class="grid h-11 w-11 place-items-center rounded-full border border-cream/20 text-cream/70 transition hover:border-gold hover:bg-gold hover:text-forest">
             <i class="fa-brands" :class="'fa-'+s"></i>
           </a>
         </template>
@@ -624,28 +651,31 @@
 
     <div class="md:col-span-3">
       <h4 class="display text-sm tracking-ultra text-gold">Navigasi</h4>
-      <ul class="mt-5 space-y-3 text-[12px] font-semibold uppercase tracking-[0.18em] text-sand/65">
+      <ul class="mt-5 space-y-3 text-[12px] font-semibold uppercase tracking-[0.18em] text-cream/65">
         <template x-for="l in nav" :key="l.href">
-          <li><a :href="l.href" x-text="l.label" class="link-underline hover:text-cream transition"></a></li>
+          <li><a :href="l.href" x-text="l.label" class="link-underline transition hover:text-gold"></a></li>
         </template>
+        <li>
+          <a :href="registerUrl" target="_blank" rel="noopener noreferrer" class="link-underline text-gold">Register Now</a>
+        </li>
       </ul>
     </div>
 
     <div class="md:col-span-4">
       <h4 class="display text-sm tracking-ultra text-gold">Kontak Panitia</h4>
-      <ul class="mt-5 space-y-4 text-sm text-sand/65">
+      <ul class="mt-5 space-y-4 text-sm text-cream/70">
         <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-location-dot mt-1 text-gold"></i><span>Jayapura &amp; Muara Tami, Papua<br>Finish: Vtekya Restaurant</span></li>
-        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-envelope mt-1 text-gold"></i><a href="mailto:hello@papuapeacerun.com" class="link-underline hover:text-cream">hello@papuapeacerun.com</a></li>
-        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-phone mt-1 text-gold"></i><a href="#" class="link-underline hover:text-cream">+62 8xx-xxxx-xxxx</a></li>
+        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-envelope mt-1 text-gold"></i><a href="mailto:hello@papuapeacerun.com" class="link-underline hover:text-gold">hello@papuapeacerun.com</a></li>
+        <li class="flex justify-center gap-3 md:justify-start"><i class="fa-solid fa-phone mt-1 text-gold"></i><a href="#" class="link-underline hover:text-gold">+62 8xx-xxxx-xxxx</a></li>
       </ul>
     </div>
   </div>
 
-  <div class="border-t border-white/10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center gap-3 px-5 py-6 text-center text-[11px] uppercase tracking-widest text-sand/40">
+  <div class="border-t border-cream/10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-3 px-5 py-6 text-center text-[11px] uppercase tracking-widest text-cream/45">
       <p>© 2027 Papua Peace Run · Satu Papua, Satu Langkah · Jayapura, Indonesia</p>
       <a href="https://nokensoft.com" target="_blank" rel="noopener noreferrer"
-         class="group flex items-center gap-2.5 rounded-full border border-white/10 px-4 py-2 transition hover:border-gold/40 hover:text-sand/80">
+         class="group flex items-center gap-2.5 rounded-full border border-cream/15 px-4 py-2 transition hover:border-gold/50 hover:text-cream/80">
         <img src="./img/logo-nokensoft.png" alt="Nokensoft" class="h-5 w-auto opacity-80 transition group-hover:opacity-100">
         <span class="normal-case tracking-normal">Powered by <span class="font-semibold text-gold">Nokensoft.com</span></span>
       </a>
@@ -656,26 +686,27 @@
 <!-- ================= HITUNG MUNDUR MENGAMBANG ================= -->
 <div x-show="floatTimer" x-cloak x-transition.opacity
      class="fixed bottom-[9.25rem] right-4 z-[70] lg:bottom-6 lg:right-[5.25rem]">
-  <div class="flex items-center gap-2 rounded-2xl border border-gold/30 bg-ink/90 px-3 py-2 shadow-2xl shadow-black/50 backdrop-blur-xl sm:gap-3 sm:px-4 sm:py-3">
-    <span class="hidden sm:grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-maroon to-brick text-gold">
+  <div class="flex items-center gap-2 rounded-2xl border border-gold/40 bg-forest/95 px-3 py-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:gap-3 sm:px-4 sm:py-3">
+    <span class="hidden h-9 w-9 shrink-0 place-items-center rounded-xl bg-emerald2 text-forest sm:grid">
       <i class="fa-solid fa-stopwatch text-sm"></i>
     </span>
     <div>
-      <p class="text-[8px] font-bold uppercase tracking-[0.2em] text-gold/80 sm:text-[9px]">Menuju 20 Mar 2027</p>
+      <p class="text-[8px] font-bold uppercase tracking-[0.2em] text-gold sm:text-[9px]">Menuju 20 Mar 2027</p>
       <div class="mt-1 flex items-end gap-1.5 sm:gap-2">
         <template x-for="u in [['days','H'],['hours','J'],['mins','M'],['secs','D']]" :key="u[0]">
           <span class="flex items-baseline gap-0.5">
             <span class="display text-base leading-none text-cream sm:text-lg" x-text="String(countdown[u[0]]).padStart(2,'0')"></span>
-            <span class="text-[8px] font-bold text-gold/70 sm:text-[9px]" x-text="u[1]"></span>
+            <span class="text-[8px] font-bold text-emerald2 sm:text-[9px]" x-text="u[1]"></span>
           </span>
         </template>
       </div>
     </div>
-    <a href="daftar.html" class="ml-1 hidden rounded-full bg-gradient-to-r from-maroon to-brick px-3 py-2 text-[9px] font-bold uppercase tracking-widest text-cream hover:from-brick hover:to-ember transition md:inline-block">
-      Daftar
+    <a :href="registerUrl" target="_blank" rel="noopener noreferrer"
+       class="ml-1 hidden rounded-full bg-gold px-3 py-2 text-[9px] font-bold uppercase tracking-widest text-forest transition hover:bg-cream md:inline-block">
+      Register
     </a>
     <button @click="floatTimer = false" aria-label="Tutup hitung mundur"
-            class="grid h-6 w-6 shrink-0 place-items-center rounded-full text-sand/50 hover:bg-white/10 hover:text-cream transition">
+            class="grid h-6 w-6 shrink-0 place-items-center rounded-full text-cream/50 transition hover:bg-cream/10 hover:text-cream">
       <i class="fa-solid fa-xmark text-[10px]"></i>
     </button>
   </div>
@@ -683,30 +714,30 @@
 
 <!-- back to top -->
 <button @click="window.scrollTo({top:0,behavior:'smooth'})" x-show="scrolled" x-cloak x-transition
-        class="fixed bottom-[5.25rem] right-4 z-[70] grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-xl shadow-black/40 transition hover:from-brick hover:to-ember lg:bottom-6 lg:right-6">
+        class="fixed bottom-[5.25rem] right-4 z-[70] grid h-12 w-12 place-items-center rounded-full bg-emerald2 text-forest shadow-xl shadow-black/30 transition hover:bg-gold lg:bottom-6 lg:right-6">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
 
 <!-- ================= NAVIGASI BAWAH (MOBILE) ================= -->
-<nav class="fixed inset-x-0 bottom-0 z-[80] border-t border-white/10 bg-ink/95 backdrop-blur-xl lg:hidden">
-  <div class="grid grid-cols-5 items-end px-1 pb-[max(0.4rem,env(safe-area-inset-bottom))] pt-2 text-[9px] font-bold uppercase tracking-widest text-sand/55">
+<nav class="fixed inset-x-0 bottom-0 z-[80] border-t border-cream/10 bg-forest/95 backdrop-blur-xl lg:hidden">
+  <div class="grid grid-cols-5 items-end px-1 pb-[max(0.4rem,env(safe-area-inset-bottom))] pt-2 text-[9px] font-bold uppercase tracking-widest text-cream/60">
     <a href="#hero" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
       <i class="fa-solid fa-house text-base"></i> Beranda
     </a>
     <a href="#kategori" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
       <i class="fa-solid fa-person-running text-base"></i> Kategori
     </a>
-    <a href="daftar.html" class="-mt-7 flex flex-col items-center gap-1 text-gold">
-      <span class="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-maroon to-brick text-cream shadow-lg shadow-maroon/40 ring-4 ring-ink">
+    <a :href="registerUrl" target="_blank" rel="noopener noreferrer" class="-mt-7 flex flex-col items-center gap-1 text-gold">
+      <span class="grid h-14 w-14 place-items-center rounded-full bg-gold text-forest shadow-lg shadow-gold/30 ring-4 ring-forest">
         <i class="fa-solid fa-ticket text-lg"></i>
       </span>
-      Daftar
+      Register
+    </a>
+    <a href="#lokasi" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
+      <i class="fa-solid fa-location-dot text-base"></i> Lokasi
     </a>
     <a href="#mitra" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
       <i class="fa-solid fa-handshake-angle text-base"></i> Mitra
-    </a>
-    <a href="login.html" class="flex flex-col items-center gap-1 py-1.5 transition hover:text-gold">
-      <i class="fa-solid fa-right-to-bracket text-base"></i> Masuk
     </a>
   </div>
 </nav>
@@ -714,11 +745,12 @@
 <script>
 function site() {
   return {
+    /* ====== GANTI DENGAN URL PENDAFTARAN PIHAK KETIGA ====== */
+    registerUrl: 'https://registrasi.papuapeacerun.com',
+
     scrolled: false,
     floatTimer: true,
     progress: 0,
-    email: '',
-    sent: false,
     countdown: { days: 0, hours: 0, mins: 0, secs: 0 },
 
     nav: [
@@ -727,6 +759,7 @@ function site() {
       { label: 'Kategori', href: '#kategori' },
       { label: 'Dampak',   href: '#dampak' },
       { label: 'Kampung',  href: '#kampung' },
+      { label: 'Lokasi',   href: '#lokasi' },
       { label: 'Mitra',    href: '#mitra' },
       { label: 'FAQ',      href: '#faq' },
     ],
@@ -752,10 +785,10 @@ function site() {
     ],
 
     categories: [
-      { km: '5K',  tag: 'Fun & Family', desc: 'Langkah pertama untuk keluarga, pelajar, dan komunitas yang baru memulai.', points: ['Ramah pemula', 'Rute dalam kota', 'Medali finisher'], start: '06.30' },
-      { km: '10K', tag: 'Community',    desc: 'Jarak favorit komunitas lari dan kantor untuk berlari berdampingan.', points: ['Water station tiap 2,5K', 'Pace group', 'Medali finisher'], start: '06.00' },
-      { km: '21K', tag: 'Half Marathon',desc: 'Setengah maraton menyusuri teluk — tantangan serius dengan pemandangan terbaik.', points: ['Timing chip', 'Cut-off 3,5 jam', 'Jersey & medali'], start: '05.30' },
-      { km: '42K', tag: 'Full Marathon',desc: 'Maraton penuh: keluar dari zona nyaman fisik dan sosial, hingga Muara Tami.', points: ['Timing chip', 'Cut-off 6,5 jam', 'Finisher kit lengkap'], start: '05.00' },
+      { km: '5K',  tag: 'Fun & Family',  desc: 'Langkah pertama untuk keluarga, pelajar, dan komunitas yang baru memulai.', points: ['Ramah pemula', 'Rute dalam kota', 'Medali finisher'], start: '06.30' },
+      { km: '10K', tag: 'Community',     desc: 'Jarak favorit komunitas lari dan kantor untuk berlari berdampingan.', points: ['Water station tiap 2,5K', 'Pace group', 'Medali finisher'], start: '06.00' },
+      { km: '21K', tag: 'Half Marathon', desc: 'Setengah maraton menyusuri teluk — tantangan serius dengan pemandangan terbaik.', points: ['Timing chip', 'Cut-off 3,5 jam', 'Jersey & medali'], start: '05.30' },
+      { km: '42K', tag: 'Full Marathon', desc: 'Maraton penuh: keluar dari zona nyaman fisik dan sosial, hingga Muara Tami.', points: ['Timing chip', 'Cut-off 6,5 jam', 'Finisher kit lengkap'], start: '05.00' },
     ],
 
     stats: [
@@ -779,6 +812,12 @@ function site() {
       { time: '12.00 WIT', title: 'Seremoni & Penutupan',  desc: 'Penyerahan penghargaan dan perayaan bersama satu Papua.' },
     ],
 
+    titik: [
+      { label: 'Start',    name: 'Pusat Kota Jayapura',    desc: 'Jl. Raya Abepura, Kota Jayapura, Papua' },
+      { label: 'Lintasan', name: 'Teluk & Jembatan Youtefa', desc: 'Menyusuri garis pantai teluk menuju Muara Tami' },
+      { label: 'Finish',   name: 'Vtekya Restaurant',      desc: 'Kampung Perdamaian · Race Village' },
+    ],
+
     tiers: [
       { name: 'Sahabat', slot: 'Community Partner', featured: false,
         benefits: ['Logo di website & materi digital', 'Penyebutan di media sosial', 'Stan komunitas di Kampung Perdamaian', '5 slot pendaftaran'] },
@@ -788,13 +827,15 @@ function site() {
         benefits: ['Penamaan dalam judul acara', 'Penempatan logo prioritas di semua kanal', 'Sesi seremoni & konferensi pers', 'Aktivasi brand kustom', '60 slot pendaftaran'] },
     ],
 
+    penyelenggara: ['Peace Generation', 'Peacemaker Papua', 'Beyond Education Centre'],
+
     faqs: [
       { q: 'Kapan dan di mana acara berlangsung?', a: 'Sabtu, 20 Maret 2027 di Jayapura dan Muara Tami, Papua. Garis finis dan acara penutup berlangsung di Vtekya Restaurant — Kampung Perdamaian.' },
+      { q: 'Bagaimana cara mendaftar?', a: 'Pendaftaran dilakukan melalui platform mitra penyelenggara. Klik tombol Register Now di halaman ini untuk membuka halaman pendaftaran resmi.' },
       { q: 'Kategori apa saja yang tersedia?', a: 'Tersedia empat kategori: 5K, 10K, 21K (half marathon), dan 42K (full marathon), terbuka untuk pelari dari berbagai tingkat kemampuan.' },
-      { q: 'Siapa saja yang boleh ikut?', a: 'Terbuka untuk umum dari seluruh Indonesia. Kategori 21K dan 42K memiliki batas usia minimum dan ketentuan kesehatan yang akan diumumkan bersama pembukaan pendaftaran.' },
+      { q: 'Siapa saja yang boleh ikut?', a: 'Terbuka untuk umum dari seluruh Indonesia. Kategori 21K dan 42K memiliki batas usia minimum dan ketentuan kesehatan yang diumumkan bersama pembukaan pendaftaran.' },
       { q: 'Bagaimana cara menjadi mitra atau sponsor?', a: 'Perusahaan, lembaga, usaha lokal, maupun individu dapat bergabung melalui paket Sahabat, Mitra, atau Utama. Hubungi panitia melalui email untuk menerima proposal lengkap.' },
       { q: 'Apakah tersedia kesempatan menjadi relawan?', a: 'Ya. Kami mengundang relawan dari beragam suku, agama, dan komunitas untuk melayani bersama — pendaftaran relawan dibuka bersamaan dengan pendaftaran peserta.' },
-      { q: 'Apa itu Kampung Perdamaian?', a: 'Ruang perjumpaan setelah lomba di Vtekya Restaurant yang menghadirkan stan mitra dan UMKM lokal, komunitas lari, kegiatan PeaceGen, area foto, musik, serta perayaan bersama.' },
     ],
 
     /* ---------------- behaviour ---------------- */
@@ -825,13 +866,10 @@ function site() {
 
     observe() {
       const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.15 });
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
       document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 
-      // animated counters
       const co = new IntersectionObserver((entries) => {
         entries.forEach(e => {
           if (!e.isIntersecting) return;
@@ -872,17 +910,8 @@ function site() {
       window.addEventListener('resize', onScroll);
       run();
     },
-
-    subscribe() {
-      if (!this.email) return;
-      this.sent = true;
-      this.email = '';
-      setTimeout(() => this.sent = false, 6000);
-    },
   }
 }
 </script>
-
-<style>[x-cloak]{display:none!important}</style>
 </body>
 </html>
