@@ -55,6 +55,9 @@ function routeSim() {
       }).setView([-2.6, 140.75], 12);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
+        // Server produksi (Cloudflare) mengirim `Referrer-Policy: same-origin`, sehingga tile tidak
+        // membawa Referer dan diblokir OSM ("Access blocked"). Kirim origin situs khusus untuk tile.
+        referrerPolicy: 'strict-origin-when-cross-origin',
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }).addTo(RM.map);
       // Klik peta untuk mengaktifkan zoom dengan scroll
