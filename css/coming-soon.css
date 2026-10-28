@@ -1,0 +1,42 @@
+/* =========================================================
+   Papua Peace Run 2027 — halaman Segera Hadir
+   (situs lengkap tersimpan di /backup)
+   ========================================================= */
+
+html { -webkit-font-smoothing: antialiased; }
+body { background: #0E2A21; color: #F3EBD8; }
+::selection { background: #FFC800; color: #0E2A21; }
+
+/* ---------- Pola cendrawasih brand ---------- */
+.pat       { background-repeat: repeat; background-size: 560px auto; }
+.pat-green { background-image: url('../img/bg3.jpg'); }
+
+/* ---------- Tipografi ---------- */
+.display { font-family: 'Anton', sans-serif; letter-spacing: .01em; line-height: .95; text-transform: uppercase; }
+/* kuning logo utama (#FFC800) → emas pola bg1 (#DEB43C / #C09C1E) */
+.gold-text {
+  background: linear-gradient(100deg, #FFC800 0%, #FFC800 45%, #DEB43C 78%, #C09C1E 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------- Cahaya emas di belakang logo ---------- */
+.glow { background: radial-gradient(circle, rgba(255,200,0,.22) 0%, rgba(46,139,110,.18) 40%, transparent 68%); filter: blur(40px); }
+
+/* ---------- Gerak ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.rise { opacity: 0; animation: rise .9s cubic-bezier(.16,1,.3,1) forwards; animation-delay: var(--d, 0s); }
+
+@keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+.floaty { animation: rise .9s cubic-bezier(.16,1,.3,1) forwards, floaty 7s ease-in-out 1s infinite; }
+
+@keyframes drift { to { background-position: 560px 280px; } }
+.drift { animation: drift 120s linear infinite; }
+
+@keyframes pulseRing { 0% { transform: scale(.85); opacity: .8 } 100% { transform: scale(1.8); opacity: 0 } }
+.pulse-dot::before { content: ""; position: absolute; inset: 0; border-radius: 99px; border: 1px solid #FFC800;
+  animation: pulseRing 2.6s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .rise { opacity: 1; }
+}

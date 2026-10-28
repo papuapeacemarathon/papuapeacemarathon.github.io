@@ -1,0 +1,82 @@
+/* =========================================================
+   Papua Peace Run 2027 — gaya kustom
+   (utilitas umum memakai Tailwind CDN; konfigurasi di js/tailwind.config.js)
+   ========================================================= */
+
+/* ---------- Dasar ---------- */
+html { -webkit-font-smoothing: antialiased; scroll-padding-top: 5rem; }
+body { background: #0E2A21; color: #F3EBD8; overflow-x: hidden; }
+::selection { background: #FFC800; color: #0E2A21; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #123A2C; }
+::-webkit-scrollbar-thumb { background: #2E8B6E; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #FFC800; }
+
+[x-cloak] { display: none !important; }
+
+/* ---------- Pola cendrawasih brand (img/bg1–bg4) ---------- */
+.pat        { background-repeat: repeat; background-size: 560px auto; }
+.pat-gold   { background-image: url('../img/bg1.jpg'); }
+.pat-cream  { background-image: url('../img/bg2.jpg'); }
+.pat-green  { background-image: url('../img/bg3.jpg'); }
+.pat-maroon { background-image: url('../img/bg4.jpg'); }
+
+/* ---------- Tipografi ---------- */
+.display { font-family: 'Anton', sans-serif; letter-spacing: .01em; line-height: .95; text-transform: uppercase; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .35em; text-transform: uppercase; }
+.stroke-cream  { -webkit-text-stroke: 1.5px rgba(243,235,216,.55); color: transparent; }
+.stroke-forest { -webkit-text-stroke: 1.5px rgba(14,42,33,.45); color: transparent; }
+/* kuning logo utama (#FFC800) → emas pola bg1 (#DEB43C / #C09C1E), tanpa kilau putih */
+.gold-text {
+  background: linear-gradient(100deg, #FFC800 0%, #FFC800 45%, #DEB43C 78%, #C09C1E 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---------- Animasi muncul saat digulir ---------- */
+[data-reveal] { opacity: 0; transform: translateY(28px);
+  transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+[data-reveal].is-in { opacity: 1; transform: none; }
+[data-reveal-delay="1"] { transition-delay: .08s } [data-reveal-delay="2"] { transition-delay: .16s }
+[data-reveal-delay="3"] { transition-delay: .24s } [data-reveal-delay="4"] { transition-delay: .32s }
+
+/* ---------- Marquee ---------- */
+.marquee { display: flex; width: max-content; animation: slide 40s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* ---------- Gerak kecil ---------- */
+@keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+.floaty { animation: floaty 7s ease-in-out infinite; }
+@keyframes pulseRing { 0% { transform: scale(.85); opacity: .8 } 100% { transform: scale(1.8); opacity: 0 } }
+.pulse-dot::before { content: ""; position: absolute; inset: 0; border-radius: 99px; border: 1px solid #FFC800;
+  animation: pulseRing 2.6s ease-out infinite; }
+
+.link-underline { position: relative; }
+.link-underline::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0;
+  background: #FFC800; transition: width .35s ease; }
+.link-underline:hover::after { width: 100%; }
+
+.card-hover { transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .4s, background-color .4s, box-shadow .4s; }
+.card-hover:hover { transform: translateY(-6px); }
+
+/* ---------- Peta simulasi rute (Leaflet) ---------- */
+.route-map { z-index: 0; background: #E9E2CF; }
+.route-map .leaflet-tile-pane { filter: saturate(.75) sepia(.12); }
+.route-map .leaflet-control-attribution { font-size: 9px; background: rgba(243,235,216,.85); }
+.rm-pin { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px;
+  border: 3px solid #F3EBD8; box-shadow: 0 4px 12px rgba(14,42,33,.45); color: #F3EBD8; font-size: 12px; }
+.rm-start  { background: #2E8B6E; }
+.rm-finish { background: #6E2140; }
+.rm-turn   { background: #FFC800; color: #0E2A21; width: 24px; height: 24px; font-size: 10px; }
+.rm-km { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px;
+  background: #F3EBD8; border: 2px solid #0E2A21; color: #0E2A21; font: 700 9px/1 'Plus Jakarta Sans', sans-serif; }
+.rm-water  { color: #2E8B6E; font-size: 13px; text-shadow: 0 0 3px #fff, 0 0 3px #fff; }
+.rm-runner { width: 20px; height: 20px; border-radius: 999px; background: #FFC800; border: 3px solid #0E2A21;
+  box-shadow: 0 0 0 6px rgba(255,200,0,.35); }
+
+/* ---------- Aksesibilitas gerak ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
