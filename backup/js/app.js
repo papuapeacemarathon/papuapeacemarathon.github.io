@@ -209,7 +209,7 @@ function site() {
     ],
 
     categories: [
-      { km: '5K',  tag: 'Lari Keluarga',    desc: 'Langkah pertama untuk keluarga, pelajar, dan komunitas yang baru memulai.', points: ['Ramah pemula', 'Rute dalam kota', 'Medali penamat'], start: '06.30' },
+      { km: '5K',  tag: 'Lari Jarak Pendek',    desc: 'Langkah pertama untuk keluarga, pelajar, dan komunitas yang baru memulai.', points: ['Ramah pemula', 'Rute dalam kota', 'Medali penamat'], start: '06.30' },
       { km: '10K', tag: 'Lari Komunitas',   desc: 'Jarak favorit komunitas lari dan kantor untuk berlari berdampingan.', points: ['Pos air tiap 2,5 km', 'Pendamping laju lari', 'Medali penamat'], start: '06.00' },
       { km: '21K', tag: 'Setengah Maraton', desc: 'Setengah maraton menyusuri teluk — tantangan serius dengan pemandangan terbaik.', points: ['Cip pencatat waktu', 'Batas waktu 3,5 jam', 'Kaus lomba & medali'], start: '05.30' },
       { km: '42K', tag: 'Maraton Penuh',    desc: 'Maraton penuh: keluar dari zona nyaman fisik dan sosial, hingga Muara Tami.', points: ['Cip pencatat waktu', 'Batas waktu 6,5 jam', 'Paket penamat lengkap'], start: '05.00' },
